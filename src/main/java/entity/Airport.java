@@ -1,30 +1,31 @@
 package entity;
 
 enum Airport {
-    Hartsfield_Jackson_Atlanta_International_Airport("ATL"),
-    Tokyo_Haneda_Airport("HND"),
-    Dubai_International_Airport("DXB"),
-    London_Heathrow_Airport("LHR"),
-    Frankfurt_Airport("FRA"),
-    Madrid_Barajas_Airport("MAD"),
-    Istanbul_Ataturk_Airport("LTBA"),
-    Ankara_Esenboga_Airport("LTAC"),
-    Boryspil_International_Airport("KBP"),
-    Chernivtsi_International_Airport("CWC"),
-    Odessa_International_Airport("ODS"),
-    Vologda_Airport("VGD"),
-    Moscow_Domodedovo_Airport("DME"),
-    Irkutsk_International_Airport("IIA"),
-    Tbilisi_Airport("TBS"),
-    Isfahan_International_Airport("IFN"),
-    Heydar_Aliyev_International_Airport("GYD");
+    ATL("Hartsfield_Jackson_Atlanta_International_Airport"),
+    HND("Tokyo_Haneda_Airport"),
+    DXB("Dubai_International_Airport"),
+    LHR("London_Heathrow_Airport"),
+    FRA("Frankfurt_Airport"),
+    MAD("Madrid_Barajas_Airport"),
+    TBA("Istanbul_Ataturk_Airport"),
+    TAC("Ankara_Esenboga_Airport"),
+    KBP("Boryspil_International_Airport"),
+    CWC("Chernivtsi_International_Airport"),
+    ODS("Odessa_International_Airport"),
+    VGD("Vologda_Airport"),
+    DME("Moscow_Domodedovo_Airport"),
+    IIA("Irkutsk_International_Airport"),
+    TBS("Tbilisi_Airport"),
+    IFN("Isfahan_International_Airport"),
+    GYD("Heydar_Aliyev_International_Airport");
 
-    private final String code;
-    Airport(String code) {
-        this.code=code;
+
+    private final String name;
+    Airport(String name) {
+        this.name=name;
     }
 
     public String getCode(){
-        return this.code;
+        return this.name;
     }
 }
