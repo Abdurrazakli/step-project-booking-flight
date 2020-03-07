@@ -18,7 +18,7 @@ public class Passenger {
 
     @Override
     public String toString() {
-        return String.format("User: [%s]",represent());
+        return String.format("Passenger: [%s]",represent());
     }
 
     @Override
