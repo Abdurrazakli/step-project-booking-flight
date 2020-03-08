@@ -12,6 +12,6 @@ import java.util.Optional;
 public interface DAO<A> {
     Optional<A> get(int id);                  // id->A.id
     Optional<List<A>> getAll();
-    void create(A a);
+    Optional<Boolean> create(A a);
     Optional<Boolean> delete(int id);         // id-> A.id
 }
