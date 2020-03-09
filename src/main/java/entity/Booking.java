@@ -1,10 +1,11 @@
 package entity;
 
+import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Objects;
 
-public class Booking {
+public class Booking implements Serializable {
     static private long bookingIdCounter = 100000;
     public final long ID;
     public final Flight flight;

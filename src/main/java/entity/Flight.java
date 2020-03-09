@@ -1,9 +1,10 @@
 package entity;
 
+import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
-public class Flight {
+public class Flight implements Serializable {
     private static int idCounter = 10000000;
     public final int ID;
     public final String flightNumber;

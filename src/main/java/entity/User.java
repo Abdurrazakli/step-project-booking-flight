@@ -1,16 +1,18 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class User {
-    public static int ID=1;
+public class User implements Serializable {
+    private static int idCounter=1;
+    public final int ID;
     public final String name;
     public final String surname;
     public final String username;
     public final String password;
 
     public User(String name, String surname, String username, String password) {
-        User.ID += 1;
+        this.ID = idCounter++;
         this.name = name;
         this.surname = surname;
         this.username = username;
@@ -36,6 +38,6 @@ public class User {
         if(this==obj)return true;
         if (obj == null || this.getClass() != obj.getClass()) return false;
         User user = (User) obj;
-        return user.ID == User.ID && user.username.equals(this.username);
+        return user.ID == this.ID && user.username.equals(this.username);
     }
 }
