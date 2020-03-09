@@ -1,6 +1,6 @@
 package entity;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.Objects;
 
 public class Flight {
@@ -9,9 +9,9 @@ public class Flight {
     public final Airport to;
     public final int price;
     public final int seats;
-    public final LocalDateTime startDate;
+    public final ZonedDateTime startDate;
 
-    public Flight(String flightNumber, Airport from, Airport to, int price, int seats, LocalDateTime startDate) {
+    public Flight(String flightNumber, Airport from, Airport to, int price, int seats, ZonedDateTime startDate) {
         this.flightNumber = flightNumber;
         this.from = from;
         this.to = to;
@@ -21,11 +21,11 @@ public class Flight {
     }
 
     private String represent(){
-
+        return String.format("%s %s %s %d %d %s", flightNumber, from, to, price, seats, startDate);
     }
     @Override
     public String toString() {
-        return String.format("Flight",);
+        return String.format("Flight: [%s]",represent());
     }
 
     @Override
