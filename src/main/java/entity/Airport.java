@@ -25,7 +25,7 @@ public enum Airport {
         this.name=name;
     }
 
-    public String getCode(){
+    public String getName(){
         return this.name;
     }
 }
