@@ -2,7 +2,6 @@ package util;
 
 import entity.Airline;
 import entity.Airport;
-import entity.Flight;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
