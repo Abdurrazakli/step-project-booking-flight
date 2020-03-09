@@ -25,14 +25,14 @@ public class UserDAO implements DAO<User>{
     }
 
     @Override
-    public Optional<Boolean> create(User newUser) {
+    public Boolean create(User newUser) {
         List<User> users = new ArrayList<>(getAll().isPresent() ? getAll().get() : Collections.emptyList());
         users.add(newUser);
         return db.write(USER_DB_PATH,users);
     }
 
     @Override
-    public Optional<Boolean> delete(int id) {
+    public Boolean delete(int id) {
         return db.write(USER_DB_PATH,getAll().map(users ->
                 users.stream().filter(user ->
                         User.ID != id).collect(Collectors.toList())).get());
