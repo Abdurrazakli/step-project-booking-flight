@@ -21,7 +21,7 @@ public class Flight {
     }
 
     private String represent(){
-        return String.format("%d %s %s %d %d %s", flightNumber, from, to, price, seats, startDate);
+        return String.format("%s %s %s %d %d %s", flightNumber, from, to, price, seats, startDate);
     }
     @Override
     public String toString() {
