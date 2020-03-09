@@ -5,15 +5,27 @@ import java.util.Objects;
 public class Passenger {
     public final String name;
     public final String surname;
-    public final User bookedBy;
 
-    public Passenger(String name, String surname, User bookedBy) {
+    public Passenger(String name, String surname) {
         this.name = name;
         this.surname = surname;
-        this.bookedBy = bookedBy;
     }
     private String represent(){
-        return String.format("%s %s %s",name,surname,bookedBy.username);
+        return String.format("%s %s",name,surname);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Passenger passenger = (Passenger) o;
+        return name.equals(passenger.name) &&
+                surname.equals(passenger.surname);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, surname);
     }
 
     @Override
@@ -21,16 +33,5 @@ public class Passenger {
         return String.format("Passenger: [%s]",represent());
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name,surname,bookedBy);
-    }
 
-    @Override
-    public boolean equals(Object obj) {
-        if(this==obj)return true;
-        if (obj == null || this.getClass() != obj.getClass()) return false;
-        Passenger passenger = (Passenger) obj;
-        return passenger.bookedBy == this.bookedBy;
-    }
 }
