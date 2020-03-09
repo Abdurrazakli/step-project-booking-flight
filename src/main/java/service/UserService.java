@@ -1,5 +1,6 @@
 package service;
 
+import dao.UserDAO;
 import entity.User;
 
 public class UserService {
