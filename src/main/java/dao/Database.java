@@ -37,4 +37,8 @@ public class Database<E> {
         List<Flight> flightList = FlightGenerator.generate();
         db.write(FlightGenerator.FLIGHT_DB_PATH,flightList);
     }
+
+    public void logout(){
+
+    }
 }

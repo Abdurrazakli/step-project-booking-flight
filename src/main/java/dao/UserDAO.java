@@ -7,9 +7,8 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class UserDAO implements DAO<User>{
-    private Map<Integer, User> storage = new HashMap<>();
-    private final String USER_DB_PATH ="./data/users.bin";
 
+    private final String USER_DB_PATH ="./data/users.bin";
     Database<User> db = new Database<>();
 
     @Override
