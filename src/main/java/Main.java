@@ -19,7 +19,5 @@ public class Main {
         System.out.println(users);
         Database<Flight> db = new Database<>();
         db.init();
-
-
     }
 }
