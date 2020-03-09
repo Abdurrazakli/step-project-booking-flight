@@ -16,15 +16,15 @@ public class Database<E> {
         }
     }
 
-    public Optional<Boolean> write(String filePath, List<E> objectList) {
+    public Boolean write(String filePath, List<E> objectList) {
         try{
             File file = new File(filePath);
             FileOutputStream fos = new FileOutputStream(file);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(objectList);
-            return Optional.of(true);
+            return true;
         }catch (IOException e){
-            return Optional.empty();
+            return false;
         }
     }
 
