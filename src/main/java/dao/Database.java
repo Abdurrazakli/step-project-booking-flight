@@ -1,5 +1,9 @@
 package dao;
 
+import entity.Flight;
+import entity.User;
+import util.FlightGenerator;
+
 import java.io.*;
 import java.util.*;
 
@@ -29,6 +33,8 @@ public class Database<E> {
     }
 
     public void init(){
-
+        Database<Flight> db = new Database<>();
+        List<Flight> flightList = FlightGenerator.generate();
+        db.write(FlightGenerator.FLIGHT_DB_PATH,flightList);
     }
 }

@@ -17,12 +17,12 @@ public class FlightDAO implements DAO<Flight> {
     }
 
     @Override
-    public Optional<Boolean> create(Flight flight) {
-        return Optional.empty();
+    public Boolean create(Flight flight) {
+        throw new IllegalArgumentException("Not impl");
     }
 
     @Override
-    public Optional<Boolean> delete(int id) {
-        return Optional.empty();
+    public Boolean delete(int id) {
+        throw new IllegalArgumentException("Not impl");
     }
 }
