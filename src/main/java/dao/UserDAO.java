@@ -7,11 +7,6 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class UserDAO implements DAO<User>{
-<<<<<<< HEAD
-=======
-    private Map<Integer, User> storage = new HashMap<>();
-    private final String USER_DB_PATH ="src/main/java/testOnMyOwn/a.bin";
->>>>>>> master
 
     private final String USER_DB_PATH ="./data/users.bin";
     Database<User> db = new Database<>();

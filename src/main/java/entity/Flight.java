@@ -4,12 +4,7 @@ import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
-<<<<<<< HEAD
-public class Flight {
-=======
 public class Flight implements Serializable {
-    private static int idCounter = 10000000;
->>>>>>> master
     public final int ID;
     public final String flightNumber;
     public final Airport from;

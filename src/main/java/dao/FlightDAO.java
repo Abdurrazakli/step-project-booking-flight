@@ -1,10 +1,8 @@
 package dao;
 
 import entity.Flight;
-import entity.User;
 import util.FlightGenerator;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -26,12 +24,12 @@ public class FlightDAO implements DAO<Flight> {
     }
 
     @Override
-    public Boolean create(Flight flight) {
+    public boolean create(Flight flight) {
         throw new IllegalArgumentException("Generated Randomly!");
     }
 
     @Override
-    public Boolean delete(int id) {
+    public boolean delete(int id) {
         return db.write(FlightGenerator.FLIGHT_DB_PATH, getAll().map(flights ->
                 flights.stream().filter(flight ->
                         flight.ID != id).collect(Collectors.toList())).get());
