@@ -6,27 +6,27 @@ import java.util.Objects;
 public class Flight {
     public final String flightNumber;
     public final Airport from;
-    public final Airport destination;
+    public final Airport to;
     public final int price;
     public final int seats;
     public final LocalDateTime startDate;
 
-    public Flight(String flightNumber, Airport from, Airport destination, int price, int seats, LocalDateTime startDate) {
+    public Flight(String flightNumber, Airport from, Airport to, int price, int seats, LocalDateTime startDate) {
         this.flightNumber = flightNumber;
         this.from = from;
-        this.destination = destination;
+        this.to = to;
         this.price = price;
         this.seats = seats;
         this.startDate = startDate;
     }
 
-//    private String represent(){
-//
-//    }
-//    @Override
-//    public String toString() {
-//        return String.format("Flight",);
-//    }
+    private String represent(){
+
+    }
+    @Override
+    public String toString() {
+        return String.format("Flight",);
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -40,6 +40,6 @@ public class Flight {
 
     @Override
     public int hashCode() {
-        return Objects.hash(flightNumber, from, destination, price, seats, startDate);
+        return Objects.hash(flightNumber, from, to, price, seats, startDate);
     }
 }
