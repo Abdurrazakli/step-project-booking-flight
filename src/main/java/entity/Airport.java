@@ -1,6 +1,6 @@
 package entity;
 
-enum Airport {
+public enum Airport {
     ATL("Hartsfield_Jackson_Atlanta_International_Airport"),
     HND("Tokyo_Haneda_Airport"),
     DXB("Dubai_International_Airport"),
@@ -25,7 +25,7 @@ enum Airport {
         this.name=name;
     }
 
-    public String getCode(){
+    public String getName(){
         return this.name;
     }
 }

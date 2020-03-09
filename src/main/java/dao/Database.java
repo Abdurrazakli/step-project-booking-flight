@@ -1,11 +1,7 @@
 package dao;
 
-import entity.User;
-
 import java.io.*;
 import java.util.*;
-import java.util.function.Consumer;
-import java.util.function.Function;
 
 public class Database<E> {
 
@@ -30,5 +26,9 @@ public class Database<E> {
         }catch (IOException e){
             return Optional.empty();
         }
+    }
+
+    public void init(){
+
     }
 }

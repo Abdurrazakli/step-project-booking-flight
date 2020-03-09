@@ -3,6 +3,7 @@ package dao;
 import entity.User;
 
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class UserDAO implements DAO<User>{
@@ -13,9 +14,9 @@ public class UserDAO implements DAO<User>{
 
     @Override
     public Optional<User> get(int id) { //TODO: Finding user with id??? or username
-        return db.read(USER_DB_PATH).flatMap(users ->
+        return getAll().flatMap(users ->
                 users.stream().filter(user ->
-                        user.ID == id).findAny());
+                        User.ID == id).findAny());
     }
 
     @Override
@@ -34,7 +35,7 @@ public class UserDAO implements DAO<User>{
     public Optional<Boolean> delete(int id) {
         return db.write(USER_DB_PATH,getAll().map(users ->
                 users.stream().filter(user ->
-                        user.ID != id).collect(Collectors.toList())).get());
+                        User.ID != id).collect(Collectors.toList())).get());
     }
 
 }

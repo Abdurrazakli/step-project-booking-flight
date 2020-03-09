@@ -3,14 +3,14 @@ package entity;
 import java.util.Objects;
 
 public class User {
-    public final int ID;
+    public static int ID=1;
     public final String name;
     public final String surname;
     public final String username;
     public final String password;
 
-    public User(int id, String name, String surname, String username, String password) {
-        this.ID = id;
+    public User(String name, String surname, String username, String password) {
+        User.ID += 1;
         this.name = name;
         this.surname = surname;
         this.username = username;
@@ -36,6 +36,6 @@ public class User {
         if(this==obj)return true;
         if (obj == null || this.getClass() != obj.getClass()) return false;
         User user = (User) obj;
-        return user.ID == this.ID && user.username.equals(this.username);
+        return user.ID == User.ID && user.username.equals(this.username);
     }
 }
