@@ -4,6 +4,8 @@ import java.time.ZonedDateTime;
 import java.util.Objects;
 
 public class Flight {
+    private static int idCounter = 10000000;
+    public final int ID;
     public final String flightNumber;
     public final Airport from;
     public final Airport to;
@@ -12,6 +14,7 @@ public class Flight {
     public final ZonedDateTime startDate;
 
     public Flight(String flightNumber, Airport from, Airport to, int price, int seats, ZonedDateTime startDate) {
+        this.ID = idCounter++;
         this.flightNumber = flightNumber;
         this.from = from;
         this.to = to;
