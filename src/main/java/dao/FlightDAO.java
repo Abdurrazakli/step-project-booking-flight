@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class FlightDAO implements DAO<Flight> {
-    private final String FLIGHT_DB_PATH = "need to feel";
+    private final String FLIGHT_DB_PATH = "src/main/java/testOnMyOwn/a.bin";
     private Database<Flight> db = new Database<>();
     @Override
     public Optional<Flight> get(int id) {
@@ -28,8 +28,7 @@ public class FlightDAO implements DAO<Flight> {
         if(!isFlightExist(flight)){
             List<Flight> flights = new ArrayList<>(getAll().orElseGet(()-> Collections.EMPTY_LIST));
             flights.add(flight);
-            db.write(FLIGHT_DB_PATH,flights);
-            return true;
+            return db.write(FLIGHT_DB_PATH,flights);
         }
         throw new RuntimeException("There is not such a flight");
     }
@@ -46,10 +45,7 @@ public class FlightDAO implements DAO<Flight> {
     }
 
     private boolean isFlightExist(Flight flight){
-       return getAll()
-                .get()
-                .stream()
-                .collect(Collectors.toList())
+        return new ArrayList<>(getAll().orElseGet(()->Collections.EMPTY_LIST))
                 .contains(flight);
     }
 }
