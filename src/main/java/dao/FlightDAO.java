@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class FlightDAO implements DAO<Flight> {
-    private final String FLIGHT_DB_PATH = "need to feel";
+    private final String FLIGHT_DB_PATH = "./data/flights.bin";
     private Database<Flight> db = new Database<>();
     @Override
     public Optional<Flight> get(int id) {
