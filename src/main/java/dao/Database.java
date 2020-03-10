@@ -9,14 +9,14 @@ import java.util.*;
 
 public class Database<E> {
 
-    public Optional<List<E>> read(String filePath){ //Read file
+    public List<E> read(String filePath){ //Read file
         try {
             File file = new File(filePath);
             FileInputStream fis = new FileInputStream(file);
             ObjectInputStream ois = new ObjectInputStream(fis);
-            return Optional.of((List<E>) ois.readObject());//TODO: UNCHECKED CAST? HANDLE: LEAVE IT LIKE THIS
+            return (List<E>) ois.readObject();//TODO: UNCHECKED CAST? HANDLE: LEAVE IT LIKE THIS
         }catch (IOException | ClassNotFoundException e){
-            return Optional.empty();
+            return Collections.emptyList();
         }
     }
 
