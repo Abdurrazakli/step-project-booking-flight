@@ -4,6 +4,7 @@ import dao.UserDAO;
 import entity.User;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,7 +13,7 @@ public class RegisterService {
     private UserService userService = new UserService();
 
     public boolean register(User newUser){
-        List<User> users = userDAO.getAll().stream().sorted((a, b) -> a.ID - b.ID).collect(Collectors.toList());
+        List<User> users = userDAO.getAll().stream().sorted(Comparator.comparingInt(a -> a.ID)).collect(Collectors.toList());
         int id = users.size() == 0 ? 1 : users.get(users.size() - 1).ID + 1;
         User.setIdCounter(id);//TODO:Fix me
         return !userService.checkUsername(newUser) && userDAO.create(newUser);
