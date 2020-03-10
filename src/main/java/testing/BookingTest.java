@@ -1,4 +1,4 @@
-package util;
+package testing;
 
 import dao.BookingDAO;
 import dao.Database;
