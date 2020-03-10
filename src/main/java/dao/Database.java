@@ -34,7 +34,7 @@ public class Database<E> {
 
     public void init(){
         Database<Flight> db = new Database<>();
-        List<Flight> flightList = FlightGenerator.generate();
+        List<Flight> flightList = FlightGenerator.generate();/////////////////////////
         db.write(FlightGenerator.FLIGHT_DB_PATH,flightList);
     }
 

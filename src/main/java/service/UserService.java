@@ -14,13 +14,9 @@ public class UserService {
                         user.equals(newUser)).findAny())
                         .isPresent();
     }
-    public boolean register(User newUser){
-        return !checkUsername(newUser) && userDAO.create(newUser);
-    }
 
-    public Optional<User> login(User newUer){
-        return checkUsername(newUer)?Optional.of(newUer):Optional.empty();
-    }
+
+
 
     public void logout(){
         // what to do???

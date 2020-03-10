@@ -19,6 +19,10 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    public static void setIdCounter(int idCounter) {
+        User.idCounter = idCounter;
+    }
+
     private String represent(){
         return String.format("%d %s %s %s %s",ID,name,surname,username,password);
     }
@@ -40,4 +44,5 @@ public class User implements Serializable {
         User user = (User) obj;
         return user.ID == this.ID && user.username.equals(this.username);
     }
+
 }
