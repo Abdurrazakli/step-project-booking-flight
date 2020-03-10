@@ -3,6 +3,8 @@ package service;
 import dao.UserDAO;
 import entity.User;
 
+import java.util.Optional;
+
 public class UserService {
     public UserDAO userDAO = new UserDAO();
 
@@ -12,15 +14,14 @@ public class UserService {
                         user.equals(newUser)).findAny())
                         .isPresent();
     }
-    public boolean register(User user){
-        //validation method, checkUsername ==>>true?create in db:return false;
-        throw new IllegalArgumentException("Not impl yet");
+    public boolean register(User newUser){
+        return !checkUsername(newUser) && userDAO.create(newUser);
     }
 
-    public boolean login(User user){
-        // checkUsername=>true?true(new Session):false
-        throw new IllegalArgumentException("Not impl yet");
+    public Optional<User> login(User newUer){
+        return checkUsername(newUer)?Optional.of(newUer):Optional.empty();
     }
+
     public void logout(){
         // what to do???
         throw new IllegalArgumentException("Not impl yet");
