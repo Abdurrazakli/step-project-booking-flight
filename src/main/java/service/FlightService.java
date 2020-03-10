@@ -19,7 +19,6 @@ public class FlightService {
 
 
     public List<Flight> getFlightsByParametr(Airport destination,int numberOfSeats, int dayOfMonth ){
-
        return getFlights().stream().filter(flight -> flight.to==destination)
                .filter(flight -> flight.seats>=numberOfSeats)
                .filter(flight -> flight.startDate.getDayOfMonth()==dayOfMonth).collect(Collectors.toList());
