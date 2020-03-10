@@ -15,6 +15,7 @@ public class UserService {
                         .isPresent();
     }
     public boolean register(User newUser){
+        User.setIdCounter(userDAO.getAll().isPresent()?userDAO.getAll().get().size():1);//TODO:Fix me
         return !checkUsername(newUser) && userDAO.create(newUser);
     }
 
