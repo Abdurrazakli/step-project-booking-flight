@@ -15,7 +15,7 @@ public class Main {
         UserDAO userDAO = new UserDAO();
         Database<Flight> db = new Database<>();
         Boolean aBoolean2 = userDAO.create(new User("ddwdfewfwefwe", "Mustafayev", "emustafayev", "efqan123"));
-        List<User> users = userDAO.getAll().get();
+        List<User> users = userDAO.getAll();
         System.out.println(users);
 
         db.init();

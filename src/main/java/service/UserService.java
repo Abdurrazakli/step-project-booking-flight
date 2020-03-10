@@ -6,13 +6,10 @@ import entity.User;
 import java.util.Optional;
 
 public class UserService {
-    public UserDAO userDAO = new UserDAO();
+    private UserDAO userDAO = new UserDAO();
 
     public boolean checkUsername(User newUser){
-        return userDAO.getAll().flatMap(users ->
-                users.stream().filter(user ->
-                        user.equals(newUser)).findAny())
-                        .isPresent();
+        return userDAO.getAll().contains(newUser);
     }
 
 
