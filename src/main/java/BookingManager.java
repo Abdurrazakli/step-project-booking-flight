@@ -11,6 +11,12 @@ public class BookingManager {
     private final AuthenticatedUserMenu authMenu = new AuthenticatedUserMenu();
     private final Console console = new Console();
     public void run(){
-        console.print(firstPage.menuOptions());
+        while(true) {
+            console.print(firstPage.menuOptions());
+            console.print(guestMenu.menuOptions());
+            console.print(authMenu.menuOptions());
+            break;
+
+        }
     }
 }
