@@ -1,6 +1,7 @@
 package ui;
 
-public class GuestMenu implements Menu {
+public class AuthenticatedUserMenu implements Menu {
+
     @Override
     public String menuOptions() {
         StringBuilder sb = new StringBuilder();
@@ -12,7 +13,10 @@ public class GuestMenu implements Menu {
         sb.append("|1. Show all flights.                        |\n");
         sb.append("|2. Show the flight info by flightNumber     |\n");
         sb.append("|3. Search a flight                          |\n");
-        sb.append("|4. Exit                                     |\n");
+        sb.append("|4. Book a flight                            |\n");
+        sb.append("|5. Cancel booking                           |\n");
+        sb.append("|6. My flights                               |\n");
+        sb.append("|7. Exit                                     |\n");
         sb.append("|============================================|\n");
         return sb.toString();
     }
