@@ -16,10 +16,13 @@ public class FlightService {
         return flightDAO.getAll();
     }
 
+
+
     public List<Flight> getFlightsByParametr(Airport destination,int numberOfSeats, int dayOfMonth ){
-        Predicate<Flight>  p1 = flight -> flight.to == destination;
-        Predicate<Flight> finalPred = p1.and(flight -> flight.seats >= numberOfSeats).and(flight -> flight.startDate.getDayOfMonth() == dayOfMonth);
-        return getFlights().stream().filter(finalPred).collect(Collectors.toList());
+
+       return getFlights().stream().filter(flight -> flight.to==destination)
+               .filter(flight -> flight.seats>=numberOfSeats)
+               .filter(flight -> flight.startDate.getDayOfMonth()==dayOfMonth).collect(Collectors.toList());
     }
 
 }
