@@ -1,5 +1,6 @@
 import dao.Database;
 import dao.UserDAO;
+import entity.Booking;
 import entity.Flight;
 import entity.User;
 import util.FlightGenerator;
@@ -19,5 +20,8 @@ public class Main {
         System.out.println(users);
 
         db.init();
+
+        BookingManager bm = new BookingManager();
+        bm.run();
     }
 }
