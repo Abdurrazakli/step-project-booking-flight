@@ -1,12 +1,12 @@
 package Controller;
 
 import service.LoginService;
-import ui.ConsoleInput;
+import ui.Console;
 
 public class UserController {
 
     LoginService loginService = new LoginService();
-
+    Console console = new Console();
     private String output(){
         StringBuilder sb = new StringBuilder();
         sb.append("|============================================|\n");
@@ -20,7 +20,7 @@ public class UserController {
 
     public void controllerLoop(){
         while (){
-            String s = ConsoleInput.scanner.nextLine();
+            String s = console.readLine();
             switch (Integer.parseInt(s)){
                 case 1:
             }
