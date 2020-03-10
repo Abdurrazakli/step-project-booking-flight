@@ -2,7 +2,7 @@ import Controller.BookingController;
 import ui.AuthenticatedUserMenu;
 import ui.FirstPageMenu;
 import ui.GuestMenu;
-import util.Console;
+import ui.Console;
 
 public class BookingManager {
     private final BookingController bookingController = new BookingController();
