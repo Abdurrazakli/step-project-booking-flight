@@ -3,7 +3,7 @@ package ui;
 public class AuthenticatedUserMenu implements Menu {
 
     @Override
-    public String show() {
+    public String menuOptions() {
         StringBuilder sb = new StringBuilder();
         sb.append("|============================================|\n");
         sb.append("|Welcome to the airport ticket booking app!  |\n");
