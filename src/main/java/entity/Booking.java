@@ -1,19 +1,21 @@
 package entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Objects;
 
 public class Booking implements Serializable {
-    static private long bookingIdCounter = 100000;
-    public final long ID;
+    static private int bookingIdCounter = 100000;
+    public final int ID;
     public final Flight flight;
     public final User user;
     public final List<Passenger> passengers;
-    public final ZonedDateTime bookingDate;
+    public final LocalDateTime bookingDate;
 
-    public Booking(Flight flight, User user, List<Passenger> passengers, ZonedDateTime bookingDate) {
+    public Booking(Flight flight, User user, List<Passenger> passengers, LocalDateTime bookingDate) {
         this.ID = bookingIdCounter++;
         this.flight = flight;
         this.user = user;
@@ -36,8 +38,8 @@ public class Booking implements Serializable {
         return Objects.hash(ID, flight, user, passengers, bookingDate);
     }
     private String represent(){
-        return String.format("id:%d FN:%s From:%s To:%s Time:%s Ordered by:%s Passengers:%s Order date:%s}",
-                ID, flight.flightNumber,flight.from,flight.to,flight.startDate,user.username,passengers,bookingDate);
+        return String.format("%d. FN: %s From: %s To: %s Time: %s Ordered by:%s Passengers:%s Order date:%s}",
+                ID, flight.flightNumber,flight.from,flight.to,flight.flightDate,user.username,passengers,bookingDate);
     }
     @Override
     public String toString() {

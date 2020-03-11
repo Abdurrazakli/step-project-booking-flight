@@ -2,26 +2,31 @@ package service;
 
 import dao.BookingDAO;
 import entity.Booking;
+import entity.User;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BookingService {
-    private BookingDAO dao = new BookingDAO();
-    public List<Booking> getAllBookings(){
-        return dao.getAll();
+    private BookingDAO bookingDAO = new BookingDAO();
+    public List<Booking> getAllBookings(String authenticatedUsername){
+        return bookingDAO.getAll().stream().filter(booking ->
+                booking.user.username.equals(authenticatedUsername))
+                .collect(Collectors.toList());
     }
 
-    public List<Booking> getFlightsByFullName(String name, String surname){
-        //todo booking by full name service
-        //Should return booked flights by full name or this full name is passenger of that flight
-        throw new IllegalArgumentException("Booking full name implement!");
+    public List<Booking> getFlightsByFullName(String username,String name, String surname){
+        return getAllBookings(username).stream().filter(booking ->
+                booking.passengers.stream().anyMatch(passenger ->
+                        passenger.name.equals(name) && passenger.surname.equals(surname)))
+                .collect(Collectors.toList());
     }
+
     public boolean bookAFlight(Booking booking){
-        //todo book a flight service
-        throw new IllegalArgumentException("booking made implement");
+        return bookingDAO.create(booking);
     }
+
     public boolean cancelBooking(Booking booked){
-        //todo delete specified booking service
-        throw new IllegalArgumentException("cancel booking implement");
+        return bookingDAO.delete(booked.ID);
     }
 }
