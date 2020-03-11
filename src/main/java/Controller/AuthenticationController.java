@@ -6,9 +6,6 @@ import ui.GuestMenu;
 import util.Parser;
 import util.TerminateProgram;
 
-import java.util.Optional;
-import java.util.Scanner;
-import java.util.function.Consumer;
 
 public class AuthenticationController {
 
@@ -42,12 +39,6 @@ public class AuthenticationController {
                 case 4:terminateProgram.terminate();break;
                 default:console.print("Please enter correct ID!");
             }
-
         }
     }
-
-    public void userRegistrationForm(){
-
-    }
-
 }

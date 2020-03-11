@@ -9,5 +9,4 @@ public class LoginService {
     public Optional<User> login(String username, String password){
         return userService.checkUsernameAndPassword(username,password);
     }
-
 }

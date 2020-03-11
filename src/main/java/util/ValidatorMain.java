@@ -1,8 +1,12 @@
 package util;
 
+import service.UserService;
+
 public class ValidatorMain {
-    public boolean usernameValidation(String username){
-        return Validator.validateUsername().apply(username)==ValidationMessage.SUCCEED;
+
+    UserService userService = new UserService();
+    public boolean validateUsername(String username){
+        return userService.checkUsername(username);
     }
     public boolean passwordValidator(String password1, String password2){
         return password1.equals(password2);

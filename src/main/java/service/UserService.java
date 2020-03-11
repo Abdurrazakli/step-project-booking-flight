@@ -5,13 +5,18 @@ import entity.User;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class UserService {
     private UserDAO userDAO = new UserDAO();
 
-    public boolean checkUsername(String username){
-        return userDAO.getAll().stream().filter(user -> user.username.equals(username)).toArray().length == 0;
+    public boolean checkUsername(String username) {
+        boolean b = userDAO.getAll().stream().noneMatch(user1 ->
+                user1.username.equals(username));
+        System.out.println(b);
+        return b;
     }
+
     public Optional<User> checkUsernameAndPassword(String username, String password){
         Optional<User> user = userDAO.getAll().stream().filter(user1 -> user1.username.equals(username)).findAny();
         if(user.isPresent() && user.get().password.equals(password)){
@@ -19,12 +24,12 @@ public class UserService {
         }
         return Optional.empty();
     }
+
     public boolean createNewUser(User user){
         return userDAO.create(user);
     }
-    public List<User> getAllUsers(){
-        return userDAO.getAll();
-    }
+
+
     public void logout(){
         // what to do???
         throw new IllegalArgumentException("Not impl yet");
