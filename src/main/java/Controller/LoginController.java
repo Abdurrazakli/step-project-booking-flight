@@ -16,6 +16,7 @@ public class LoginController {
         username = console.readLine();
         console.print("Please enter your password: ");
         password = console.readLine();
-        throw new RuntimeException("Yes");
+        console.print("ERRORRRR in login");
+        throw new RuntimeException("LOGIN SHOULD be IMPLEMEnTED");
     }
 }

@@ -2,10 +2,9 @@ package Controller;
 
 import service.LoginService;
 import ui.Console;
-import ui.GuestMenu;
+import ui.Messages;
 import util.Parser;
 import util.TerminateProgram;
-
 
 public class AuthenticationController {
 
@@ -14,13 +13,13 @@ public class AuthenticationController {
     LoginController loginController = new LoginController();
     TerminateProgram terminateProgram = new TerminateProgram();
 
-    GuestMenu guestMenu = new GuestMenu();
     Parser parser = new Parser();
     Console console = new Console();
     int choice;
     boolean LOGINED = false;
 
-    public void Authentication (){
+    public void authentication(){
+        System.out.println("AUTH");
         while (true){
 
             String s = console.readLine();
@@ -31,7 +30,8 @@ public class AuthenticationController {
             }
 
             switch (choice){
-                case 1:guestMenu.menuOptions();break;//Should go main controller;
+                case 1:
+                    Messages.showGuestMenu();break;//Should go main controller;
                 case 2:registerController.register();break;
                 case 3:
                     boolean LOGINED = loginController.login();
@@ -39,6 +39,12 @@ public class AuthenticationController {
                 case 4:terminateProgram.terminate();break;
                 default:console.print("Please enter correct ID!");
             }
+
         }
     }
+
+    public void userRegistrationForm(){
+
+    }
+
 }
