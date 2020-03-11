@@ -16,12 +16,14 @@ public class FlightService {
         return flightDAO.getAll();
     }
 
-
-
     public List<Flight> getFlightsByParametr(Airport destination,int numberOfSeats, int dayOfMonth ){
        return getFlights().stream().filter(flight -> flight.to==destination)
                .filter(flight -> flight.seats>=numberOfSeats)
                .filter(flight -> flight.startDate.getDayOfMonth()==dayOfMonth).collect(Collectors.toList());
+    }
+    public List<Flight> getFlightsByFlightNumber(String flightNumber){
+        //todo FN service
+        throw new IllegalArgumentException("Service getFlight by FN Implement");
     }
 
 }
