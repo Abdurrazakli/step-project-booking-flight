@@ -11,10 +11,7 @@ public class UserService {
     private UserDAO userDAO = new UserDAO();
 
     public boolean checkUsername(String username) {
-        boolean b = userDAO.getAll().stream().noneMatch(user1 ->
-                user1.username.equals(username));
-        System.out.println(b);
-        return b;
+        return userDAO.getAll().stream().anyMatch(user -> user.username.equals(username));
     }
 
     public Optional<User> checkUsernameAndPassword(String username, String password){
@@ -28,7 +25,6 @@ public class UserService {
     public boolean createNewUser(User user){
         return userDAO.create(user);
     }
-
 
     public void logout(){
         // what to do???

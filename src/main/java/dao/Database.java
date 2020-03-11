@@ -14,7 +14,10 @@ public class Database<E> {
             File file = new File(filePath);
             FileInputStream fis = new FileInputStream(file);
             ObjectInputStream ois = new ObjectInputStream(fis);
-            return (List<E>) ois.readObject();//TODO: UNCHECKED CAST? HANDLE: LEAVE IT LIKE THIS
+            List<E> objects = (List<E>) ois.readObject();
+            ois.close();
+            fis.close();
+            return objects;
         }catch (IOException | ClassNotFoundException e){
             return Collections.emptyList();
         }
@@ -26,6 +29,8 @@ public class Database<E> {
             FileOutputStream fos = new FileOutputStream(file);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(objectList);
+            oos.close();
+            fos.close();
             return true;
         }catch (IOException e){
             return false;

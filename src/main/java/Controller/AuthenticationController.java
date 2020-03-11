@@ -1,10 +1,13 @@
 package Controller;
 
+import entity.User;
 import service.LoginService;
 import ui.Console;
 import ui.Messages;
 import util.Parser;
 import util.TerminateProgram;
+
+import java.util.Optional;
 
 public class AuthenticationController {
 
@@ -34,12 +37,11 @@ public class AuthenticationController {
                     Messages.showGuestMenu();break;//Should go main controller;
                 case 2:registerController.register();break;
                 case 3:
-                    boolean LOGINED = loginController.login();
+                    Optional<User> loginedUser = loginController.login();
                     break;
                 case 4:terminateProgram.terminate();break;
                 default:console.print("Please enter correct ID!");
             }
-
         }
     }
 

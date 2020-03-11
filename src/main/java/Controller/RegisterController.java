@@ -8,9 +8,7 @@ import ui.Console;
 import util.ValidatorMain;
 
 public class RegisterController {
-    RegisterService registerService = new RegisterService();
     UserService userService = new UserService();
-    UserDAO userDAO = new UserDAO();
     Console console = new  Console();
     ValidatorMain validatorMain = new ValidatorMain();
     String name,surname,username,password;
@@ -23,7 +21,10 @@ public class RegisterController {
                 console.print("Enter surname: ");
                 surname = console.readLine();
                 console.print("Enter username: ");
-                while (true){ if(validatorMain.validateUsername(console.readLine())) break; }
+                username = console.readLine();
+                while (true){
+                    if(!userService.checkUsername(username)) break;
+                }
                 console.print("Enter password: ");
                 password = console.readLine();
                 console.print("Enter password again: ");
@@ -36,6 +37,8 @@ public class RegisterController {
                     }
                 }
                 console.print("Registered!");
-                return userService.createNewUser(new User(name, surname, username, password));
+                User user = new User(name, surname, username, password);
+                System.out.println(username);
+                return userService.createNewUser(user);
     }
 }
