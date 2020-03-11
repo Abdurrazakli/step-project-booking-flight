@@ -13,6 +13,13 @@ public class LoginController {
     Console console = new Console();
     String username;
     String password;
+    /*
+        todo login boolean qaytarsin.
+     Loginle bagli butun prosedurlar bu loginin icinde bas versin
+     message gostermek
+     menyu secimlerini etmek
+     onlara uygun lazimi servisleri cagirmaq
+     */
     public Optional<User> login(){
         console.print("Please enter your username: ");
         username = console.readLine();
