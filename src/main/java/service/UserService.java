@@ -3,6 +3,7 @@ package service;
 import dao.UserDAO;
 import entity.User;
 
+import java.util.List;
 import java.util.Optional;
 
 public class UserService {
@@ -20,6 +21,9 @@ public class UserService {
     }
     public boolean createNewUser(User user){
         return userDAO.create(user);
+    }
+    public List<User> getAllUsers(){
+        return userDAO.getAll();
     }
     public void logout(){
         // what to do???
