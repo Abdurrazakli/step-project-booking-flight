@@ -26,7 +26,7 @@ public class AuthenticationController {
     public void Authentication (){
         while (true){
 
-            String s = console.read();
+            String s = console.readLine();
             if(parser.strToInt(console.read()).isPresent()){
                 choice=parser.strToInt(s).get();
             }else {
