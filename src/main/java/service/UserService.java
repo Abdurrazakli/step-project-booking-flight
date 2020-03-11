@@ -11,10 +11,9 @@ public class UserService {
     public boolean checkUsername(User newUser){
         return userDAO.getAll().contains(newUser);
     }
-
-
-
-
+    public boolean createNewUser(User user){
+        return userDAO.create(user);
+    }
     public void logout(){
         // what to do???
         throw new IllegalArgumentException("Not impl yet");
