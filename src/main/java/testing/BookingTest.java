@@ -8,6 +8,7 @@ import entity.Flight;
 import entity.Passenger;
 import entity.User;
 
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class BookingTest {
         passengers.add(new Passenger("a","a"));
         passengers.add(new Passenger("b","b"));
         ZonedDateTime time = ZonedDateTime.now(ZoneId.systemDefault());
-        Booking booked = new Booking(flights.get(0),user,passengers,time);
+        Booking booked = new Booking(flights.get(0),user,passengers,time.toLocalDateTime());
         System.out.println(booked);
         BookingDAO bookingDAO = new BookingDAO();
         System.out.println(bookingDAO.create(booked));
