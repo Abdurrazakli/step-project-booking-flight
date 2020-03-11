@@ -25,7 +25,7 @@ public class Flight implements Serializable {
     }
 
     private String represent(){
-        return String.format("%s %s-->%s %dAZN %d %s", flightNumber, from, to, price, seats, flightDate);
+        return String.format("%s %s-->%s %8dAZN %4d %4s", flightNumber, from.getName(), to.getName(), price, seats, flightDate);
     }
     @Override
     public String toString() {

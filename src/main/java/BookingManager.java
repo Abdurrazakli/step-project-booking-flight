@@ -1,5 +1,6 @@
 import Controller.*;
 import ui.*;
+import util.FlightGenerator;
 import util.TerminateProgram;
 
 public class BookingManager {
