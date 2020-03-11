@@ -14,6 +14,7 @@ public class RegisterController {
     Console console = new  Console();
     ValidatorMain validatorMain = new ValidatorMain();
     String name,surname,username,password;
+
     public boolean register(){
                 console.print("====Registration Form====");
 
@@ -30,12 +31,14 @@ public class RegisterController {
                     password = console.readLine();
                     console.print("Enter password again: \n");
                     String password2 = console.read();
-                    if(!password.equals(password2)){
+                    if(!validatorMain.passwordValidator(password,password2)){
                         console.print("Try Again!");
                     }else {
                         break;
                     }
                 }
+                console.print("Registered!");
                 return userService.createNewUser(new User(name, surname, username, password));
+
     }
 }
