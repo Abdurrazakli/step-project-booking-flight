@@ -19,7 +19,7 @@ public class FlightController {
                 forEach(f->console.print(f.toString()));
     }
     public void showAllFlightByFlightNumber(String FN){
-        List<Flight> filtered = flightService.getFlightsByFlightNumber(FN);
+        List<Flight> filtered = flightService.getFlightsByFlightNumber(FN.toUpperCase());
         if(filtered.size() == 0){
             console.print("There is not such a flight.\nMake sure it is valid FN");
         }else {
