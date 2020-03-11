@@ -8,8 +8,8 @@ import java.util.Optional;
 public class UserService {
     private UserDAO userDAO = new UserDAO();
 
-    public boolean checkUsername(User newUser){
-        return userDAO.getAll().contains(newUser);
+    public boolean checkUsername(String username){
+        return userDAO.getAll().stream().filter(user -> user.surname.equals(username)).toArray().length == 0;
     }
 
 

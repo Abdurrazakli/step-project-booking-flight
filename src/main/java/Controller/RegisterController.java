@@ -4,11 +4,13 @@ import dao.UserDAO;
 import entity.User;
 import service.RegisterService;
 import ui.Console;
+import util.ValidatorMain;
 
 public class RegisterController {
     RegisterService registerService = new RegisterService();
     UserDAO userDAO = new UserDAO();
     Console console = new  Console();
+    ValidatorMain validatorMain = new ValidatorMain();
     String name,surname,username,password;
     public boolean register(){
 
@@ -17,7 +19,10 @@ public class RegisterController {
                 console.print("Enter surname: \n");
                 surname = console.read();
                 console.print("Enter username: \n");
-                username = console.read();
+                while (true){
+                     validatorMain.usernameValidation(console.read());
+
+                }
                 console.print("Enter password: \n");
                 while(true){
                     password = console.read();
@@ -29,6 +34,6 @@ public class RegisterController {
                         break;
                     }
                 }
-                return userDAO.create(new User(name, surname, username, password));
+                return
     }
 }

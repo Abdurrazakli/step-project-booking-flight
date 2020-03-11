@@ -16,6 +16,6 @@ public class RegisterService {
         List<User> users = userDAO.getAll().stream().sorted(Comparator.comparingInt(a -> a.ID)).collect(Collectors.toList());
         int id = users.size() == 0 ? 1 : users.get(users.size() - 1).ID + 1;
         User.setIdCounter(id);//TODO:Fix me
-        return !userService.checkUsername(newUser) && userDAO.create(newUser);
+        return !userService.checkUsername(newUser.username) && userDAO.create(newUser);
     }
 }
