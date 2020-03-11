@@ -21,9 +21,13 @@ public class RegisterController {
                 console.print("Enter surname: ");
                 surname = console.readLine();
                 console.print("Enter username: ");
-                username = console.readLine();
                 while (true){
-                    if(!userService.checkUsername(username)) break;
+                   username = console.readLine();
+                    if(userService.checkUsername(username)){
+                        console.print("Username already exists. Pick another username!!!");
+                    }else {
+                        break;
+                    }
                 }
                 console.print("Enter password: ");
                 password = console.readLine();
@@ -31,7 +35,7 @@ public class RegisterController {
                  while(true){
                     String password2 = console.read();
                     if(!validatorMain.passwordValidator(password,password2)){
-                        console.print("Try Again!");
+                        console.print("Enter validation password again!");
                     }else {
                         break;
                     }
