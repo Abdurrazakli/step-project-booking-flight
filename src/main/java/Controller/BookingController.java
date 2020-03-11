@@ -11,6 +11,8 @@ import util.Parser;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class BookingController {
@@ -21,7 +23,7 @@ public class BookingController {
     FlightController flightController = new FlightController();
     int seatCount;
     String passengerName, passengerSurname;
-    List<Passenger> passengerList;
+    List<Passenger> passengerList = Collections.emptyList();
 
 
     public void bookAFlight(User LoggedInUser){
@@ -50,7 +52,7 @@ public class BookingController {
                         passengerName = console.readLine();
                         console.print("Enter passenger surname");
                         passengerSurname = console.readLine();
-                        passengerList.add(new Passenger(passengerName, passengerSurname));
+                        passengerList.add(new Passenger(passengerName,passengerSurname));//TODO Exception in thread "main" java.lang.UnsupportedOperationException
                     }else{
                         break;
                     }

@@ -58,7 +58,7 @@ public class LoginController {
                 case 1: flightController.showAllFlights();break;
                 case 2: flightController.showAllFlightByFlightNumber(getFlightNumber());break;
                 case 3: flightController.searchFlights();break;
-                case 4:bookingController.bookAFlight(user);
+                case 4: bookingController.bookAFlight(user);
 
             }
         }

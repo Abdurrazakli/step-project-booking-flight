@@ -17,7 +17,6 @@ public class BookingManager {
     public void run(){
         db.__init__();
         while(true) {
-            try {
                 console.print(Messages.showFirsPageMenu());
                 int choice = Integer.parseInt(console.readLine());
                 switch (choice){//guest,register,login,exit
@@ -37,10 +36,8 @@ public class BookingManager {
                         console.print("Please enter a valid operation id!");
                 }
             }
-            catch (Exception e){
-                console.print("Please enter a valid input");
-            }
+
 
         }
-    }
+
 }
