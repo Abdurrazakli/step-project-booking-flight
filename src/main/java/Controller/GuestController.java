@@ -32,7 +32,7 @@ public class GuestController {
                             flightController.showAllFlightByFlightNumber(console.readLine());
                             break;
                         case 3:
-                            flightController.showSearchedFlight();
+                            flightController.showSearchedFlight(flightController.searchFlights());
                             break;
                         case 4:
                             terminator.terminate();

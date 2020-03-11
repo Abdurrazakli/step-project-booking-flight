@@ -7,6 +7,7 @@ import service.UserService;
 import ui.Console;
 import ui.Messages;
 import util.Parser;
+import util.TerminateProgram;
 
 import java.util.Optional;
 
@@ -16,6 +17,7 @@ public class LoginController {
     FlightController flightController = new FlightController();
     FlightService flightService = new FlightService();
     BookingController bookingController = new BookingController();
+    TerminateProgram terminator = new TerminateProgram();
     Console console = new Console();
     Parser parser = new Parser();
     String username;
@@ -57,8 +59,12 @@ public class LoginController {
             switch (userChoice){
                 case 1: flightController.showAllFlights();break;
                 case 2: flightController.showAllFlightByFlightNumber(getFlightNumber());break;
-                case 3: flightController.searchFlights();break;
-                case 4: bookingController.bookAFlight(user);
+                case 3: flightController.showSearchedFlight(flightController.searchFlights());break;
+                case 4: bookingController.bookMe(user); break;
+                case 5: console.print("implement case 5 login");break;
+                case 6: console.print("implement case 6 login");break;
+                case 7: terminator.terminate();
+                default:console.print("Enter a valid command!");break;
 
             }
         }
