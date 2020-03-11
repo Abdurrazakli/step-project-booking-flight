@@ -22,8 +22,9 @@ public class FlightService {
                .filter(flight -> flight.startDate.getDayOfMonth()==dayOfMonth).collect(Collectors.toList());
     }
     public List<Flight> getFlightsByFlightNumber(String flightNumber){
-        //todo FN service
-        throw new IllegalArgumentException("Service getFlight by FN Implement");
+        return flightDAO.getAll().stream().filter(flight ->
+                flight.flightNumber.equals(flightNumber))
+                .collect(Collectors.toList());
     }
 
 }
