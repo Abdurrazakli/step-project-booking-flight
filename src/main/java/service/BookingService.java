@@ -10,6 +10,7 @@ public class BookingService {
     public List<Booking> getAllBookings(){
         return dao.getAll();
     }
+
     public List<Booking> getFlightsByFullName(String name, String surname){
         //todo booking by full name service
         //Should return booked flights by full name or this full name is passenger of that flight

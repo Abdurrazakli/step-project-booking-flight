@@ -4,6 +4,7 @@ import entity.Airline;
 import entity.Airport;
 import entity.Flight;
 
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.List;
@@ -23,7 +24,7 @@ public class FlightGenerator {
                         Airport.values()[randomGenerator(0, Airport.values().length - 1)],
                         randomGenerator(150, 1500),
                         randomGenerator(1, 200),
-                        ZonedDateTime.now(ZoneId.of("GMT+04:00")).plusHours(randomGenerator(1, 23)))).collect(Collectors.toList());
+                        LocalDate.now().plusDays(randomGenerator(1,10)))).collect(Collectors.toList());
     }
 
     private static int randomGenerator(int start,int bound){

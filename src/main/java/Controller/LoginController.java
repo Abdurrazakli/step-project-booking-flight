@@ -32,6 +32,5 @@ public class LoginController {
             console.print("Username or password is wrong!");
             return Optional.empty();
         }
-
     }
 }

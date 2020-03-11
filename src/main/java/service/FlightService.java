@@ -4,6 +4,7 @@ import dao.FlightDAO;
 import entity.Airport;
 import entity.Flight;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -16,11 +17,13 @@ public class FlightService {
         return flightDAO.getAll();
     }
 
-    public List<Flight> getFlightsByParametr(Airport destination,int numberOfSeats, int dayOfMonth ){
-       return getFlights().stream().filter(flight -> flight.to==destination)
-               .filter(flight -> flight.seats>=numberOfSeats)
-               .filter(flight -> flight.startDate.getDayOfMonth()==dayOfMonth).collect(Collectors.toList());
+    public List<Flight> getFlightsByParametr(String destination,int numberOfSeats, String date ){
+        return getFlights().stream().filter(flight -> flight.to.toString().equals(destination) &&
+                flight.seats>=numberOfSeats &&
+                (flight.flightDate.toString().equals(date) || date.equals(""))).collect(Collectors.toList());
     }
+
+
     public List<Flight> getFlightsByFlightNumber(String flightNumber){
         return flightDAO.getAll().stream().filter(flight ->
                 flight.flightNumber.equals(flightNumber))

@@ -1,6 +1,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
@@ -11,20 +12,20 @@ public class Flight implements Serializable {
     public final Airport to;
     public final int price;
     public final int seats;
-    public final ZonedDateTime startDate;
+    public final LocalDate flightDate;
 
-    public Flight(int id, String flightNumber, Airport from, Airport to, int price, int seats, ZonedDateTime startDate) {
+    public Flight(int id, String flightNumber, Airport from, Airport to, int price, int seats, LocalDate startDate) {
         this.ID = id;
         this.flightNumber = flightNumber;
         this.from = from;
         this.to = to;
         this.price = price;
         this.seats = seats;
-        this.startDate = startDate;
+        this.flightDate = startDate;
     }
 
     private String represent(){
-        return String.format("%s %s %s %d %d %s", flightNumber, from, to, price, seats, startDate);
+        return String.format("%s %s %s %d %d %s", flightNumber, from, to, price, seats, flightDate);
     }
     @Override
     public String toString() {
@@ -38,11 +39,11 @@ public class Flight implements Serializable {
         Flight flight = (Flight) o;
         return  seats == flight.seats &&
                 flightNumber.equals(flight.flightNumber) &&
-                startDate.equals(flight.startDate);
+                flightDate.equals(flight.flightDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(flightNumber, from, to, price, seats, startDate);
+        return Objects.hash(flightNumber, from, to, price, seats, flightDate);
     }
 }
