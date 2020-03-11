@@ -21,12 +21,12 @@ public class AuthenticationController {
     Parser parser = new Parser();
     Console console = new Console();
     int choice;
+    boolean LOGINED = false;
 
     public void Authentication (){
         while (true){
 
-            Scanner sc = new Scanner(System.in);
-            String s = sc.next();
+            String s = console.read();
             if(parser.strToInt(console.read()).isPresent()){
                 choice=parser.strToInt(s).get();
             }else {
@@ -36,10 +36,13 @@ public class AuthenticationController {
             switch (choice){
                 case 1:guestMenu.menuOptions();break;//Should go main controller;
                 case 2:registerController.register();break;
-                case 3:loginController.login();break;
+                case 3:
+                    boolean LOGINED = loginController.login();
+                    break;
                 case 4:terminateProgram.terminate();break;
                 default:console.print("Please enter correct ID!");
             }
+
         }
     }
 
