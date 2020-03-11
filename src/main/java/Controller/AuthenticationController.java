@@ -7,6 +7,7 @@ import util.Parser;
 import util.TerminateProgram;
 
 import java.util.Optional;
+import java.util.Scanner;
 import java.util.function.Consumer;
 
 public class AuthenticationController {
@@ -24,7 +25,8 @@ public class AuthenticationController {
     public void Authentication (){
         while (true){
 
-            String s = console.read();
+            Scanner sc = new Scanner(System.in);
+            String s = sc.next();
             if(parser.strToInt(console.read()).isPresent()){
                 choice=parser.strToInt(s).get();
             }else {

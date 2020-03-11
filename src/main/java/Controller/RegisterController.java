@@ -3,29 +3,31 @@ package Controller;
 import dao.UserDAO;
 import entity.User;
 import service.RegisterService;
+import service.UserService;
 import ui.Console;
 import util.ValidatorMain;
 
 public class RegisterController {
     RegisterService registerService = new RegisterService();
+    UserService userService = new UserService();
     UserDAO userDAO = new UserDAO();
     Console console = new  Console();
     ValidatorMain validatorMain = new ValidatorMain();
     String name,surname,username,password;
     public boolean register(){
+                console.print("====Registration Form====");
 
                 console.print("Enter name: \n");
-                name = console.read();
+                name = console.readLine();
                 console.print("Enter surname: \n");
-                surname = console.read();
+                surname = console.readLine();
                 console.print("Enter username: \n");
                 while (true){
-                     validatorMain.usernameValidation(console.read());
-
+                    if(validatorMain.usernameValidation(console.read())) break;
                 }
                 console.print("Enter password: \n");
                 while(true){
-                    password = console.read();
+                    password = console.readLine();
                     console.print("Enter password again: \n");
                     String password2 = console.read();
                     if(!password.equals(password2)){
@@ -34,6 +36,6 @@ public class RegisterController {
                         break;
                     }
                 }
-                return
+                return userService.createNewUser(new User(name, surname, username, password));
     }
 }

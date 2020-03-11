@@ -10,6 +10,6 @@ public class UserServiceTesting {
         UserDAO dao = new UserDAO();
         UserService userService = new UserService();
         dao.create(user);
-        System.out.println(userService.checkUsername(user));
+        System.out.println(userService.checkUsername(user.username));
     }
 }
