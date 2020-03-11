@@ -13,9 +13,9 @@ public class Booking implements Serializable {
     public final Flight flight;
     public final User user;
     public final List<Passenger> passengers;
-    public final LocalDateTime bookingDate;
+    public final LocalDate bookingDate;
 
-    public Booking(Flight flight, User user, List<Passenger> passengers, LocalDateTime bookingDate) {
+    public Booking(Flight flight, User user, List<Passenger> passengers, LocalDate bookingDate) {
         this.ID = bookingIdCounter++;
         this.flight = flight;
         this.user = user;

@@ -2,8 +2,6 @@ package service;
 
 import dao.BookingDAO;
 import entity.Booking;
-import entity.User;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,7 +13,7 @@ public class BookingService {
                 .collect(Collectors.toList());
     }
 
-    public List<Booking> getFlightsByFullName(String username,String name, String surname){
+    public List<Booking> getFlightsByFullName(String username, String name, String surname){
         return getAllBookings(username).stream().filter(booking ->
                 booking.passengers.stream().anyMatch(passenger ->
                         passenger.name.equals(name) && passenger.surname.equals(surname)))

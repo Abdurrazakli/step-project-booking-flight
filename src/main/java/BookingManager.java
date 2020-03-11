@@ -1,4 +1,6 @@
 import Controller.*;
+import dao.Database;
+import entity.Flight;
 import ui.*;
 import util.FlightGenerator;
 import util.TerminateProgram;
@@ -10,8 +12,10 @@ public class BookingManager {
     private LoginController login = new LoginController();
     private final Console console = new Console();
     private TerminateProgram terminator = new TerminateProgram();
+    Database<Flight> db = new Database<>();
     int choice;
     public void run(){
+        db.__init__();
         while(true) {
             try {
                 console.print(Messages.showFirsPageMenu());

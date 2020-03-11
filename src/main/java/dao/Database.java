@@ -42,6 +42,10 @@ public class Database<E> {
         List<Flight> flightList = FlightGenerator.generate();/////////////////////////
         db.write(FlightGenerator.FLIGHT_DB_PATH,flightList);
     }
+    public void __init__(){
+        Database<Flight> db = new Database<>();
+        db.write(FlightGenerator.FLIGHT_DB_PATH,FlightGenerator.generate());
+    }
 
     public void logout(){
 
