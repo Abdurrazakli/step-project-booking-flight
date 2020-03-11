@@ -18,7 +18,7 @@ public class FlightService {
     }
 
     public List<Flight> getFlightsByParametr(String destination,int numberOfSeats, String date ){
-        return getFlights().stream().filter(flight -> flight.to.toString().equals(destination) &&
+        return getFlights().stream().filter(flight -> flight.to.getName().toUpperCase().equals(destination.toUpperCase()) &&
                 flight.seats>=numberOfSeats &&
                 (flight.flightDate.toString().equals(date) || date.equals(""))).collect(Collectors.toList());
     }
