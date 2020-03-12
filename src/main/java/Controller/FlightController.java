@@ -33,7 +33,7 @@ public class FlightController {
             console.print("There is not such a flight.\n");
         }else {
             console.print("==============Flights============");
-            filtered.stream().forEach(f->console.print(String.format("%d. %s",f.ID,f.toString())));
+            filtered.forEach(f->console.print(String.format("%d. %s",f.ID,f.toString())));
         }
     }
     public List<Flight> searchFlights(){
