@@ -9,7 +9,6 @@ import exceptions.OutOfBound;
 import service.BookingService;
 import service.FlightService;
 import ui.Console;
-import util.NumberCheck;
 import util.Parser;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -42,14 +41,14 @@ public class BookingController {
         console.print("Please enter the destination:");
         destination = console.readLine();
         console.print("Please enter the number of seats:");
-        seats = NumberCheck.getNumber(console.readLine()); //fixme parser change
+        seats = Parser.getUserChoice(console);
         console.print("Please enter the date:(year-day-month ex:2020-15-03");
         date = console.readLine();
         flights = flightService.getFlightsByParametr(destination, seats, date);
         flightController.showSearchedFlight(flights);
         if (flights.size() > 0) {
             console.print("Enter flight index: ");
-            int flightId = NumberCheck.getNumber(console.readLine());
+            int flightId = Parser.getUserChoice(console);
             passengers = new ArrayList<>();
             for (int i = 1; i <= seats; i++) {
                 console.print(String.format("Name of the %d. passenger:", i));
@@ -70,7 +69,7 @@ public class BookingController {
 
     private int getFlightId() {
         try {
-            int id = NumberCheck.getNumber(console.readLine());
+            int id = Parser.getUserChoice(console);
             if (id > flights.get(flights.size() - 1).ID) {
                 throw new OutOfBound("Entered id is not valid");
             }
@@ -95,7 +94,7 @@ public class BookingController {
     public void cancelMyFlight(User currentUser) {
         myFlights(currentUser);
         console.print("Choose booking ID to cancel!");
-        int bookID = NumberCheck.getNumber(console.readLine());
+        int bookID = Parser.getUserChoice(console);
         if (bookingService.cancelBooking(bookID)) {
             console.print("Booking canceled successfully!");
         } else {

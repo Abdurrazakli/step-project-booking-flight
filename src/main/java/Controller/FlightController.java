@@ -4,7 +4,8 @@ import dao.Database;
 import entity.Flight;
 import service.FlightService;
 import ui.Console;
-import util.NumberCheck;
+import util.Parser;
+
 import java.util.List;
 
 public class FlightController {
@@ -50,7 +51,7 @@ public class FlightController {
         console.print("Please enter the destination:");
         destination = console.readLine();
         console.print("Please enter the number of seats:");
-        seats = NumberCheck.getNumber(console.readLine());
+        seats = Parser.getUserChoice(console);
         console.print("Please enter the date:(year-day-month ex:2020-15-03");
         date = console.readLine();
         return flightService.getFlightsByParametr(destination,seats,date);
