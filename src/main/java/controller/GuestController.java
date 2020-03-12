@@ -1,4 +1,4 @@
-package Controller;
+package controller;
 
 
 import dao.Database;
@@ -23,17 +23,11 @@ public class GuestController {
 
     public void start(){
         int choice = 0;
-        int operations_count = 4;
         while (true) {
             boolean LOG_OUT=false;
 
-            try{
                 console.print(Messages.showGuestMenu());
                 choice = Parser.getUserChoice(console);
-                if(choice > operations_count || choice < 0){
-                    throw new InvalidInput("Invalid input of user");
-                }
-                else {
                     switch (choice){
                         case 1:
                             flightController.showAllFlights();
@@ -51,17 +45,12 @@ public class GuestController {
                         case 5:
                             terminator.terminate();
                             break;
-                        default:break;
+                        default:console.print("Invalid Operation ID!");break;
+                    }
+                    if(LOG_OUT){
+                        break;
                     }
                 }
             }
-            catch (InvalidInput ex){
-                console.print(ex.getMessage());
-            }
-            if(LOG_OUT){
-                break;
-            }
         }
-    }
 
-}

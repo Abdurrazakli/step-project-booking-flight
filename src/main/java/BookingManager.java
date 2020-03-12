@@ -1,7 +1,5 @@
-import Controller.*;
+import controller.*;
 import dao.Database;
-import dao.FileOperations;
-import entity.Flight;
 import ui.*;
 import util.FlightGenerator;
 import util.Parser;

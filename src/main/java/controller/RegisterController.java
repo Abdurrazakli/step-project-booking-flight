@@ -1,7 +1,6 @@
-package Controller;
+package controller;
 
 import dao.Database;
-import dao.UserDAO;
 import entity.User;
 import service.UserService;
 import ui.Console;

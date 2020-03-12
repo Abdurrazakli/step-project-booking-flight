@@ -2,7 +2,6 @@ package dao;
 
 import entity.Flight;
 import util.FlightGenerator;
-
 import java.io.*;
 import java.util.*;
 
@@ -35,7 +34,6 @@ public class FileOperations<E> {
             return false;
         }
     }
-
 
     public void __init__(){
         FileOperations<Flight> db = new FileOperations<>();
