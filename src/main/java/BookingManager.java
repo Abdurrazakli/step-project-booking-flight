@@ -3,6 +3,7 @@ import dao.Database;
 import dao.FileOperations;
 import entity.Flight;
 import ui.*;
+import util.FlightGenerator;
 import util.Parser;
 import util.TerminateProgram;
 
@@ -13,6 +14,7 @@ public class BookingManager {
     private Database db;
     private Console console;
     private GuestController guest;
+
     public BookingManager(){
         console = new Console();
         db = new Database();
@@ -20,9 +22,11 @@ public class BookingManager {
         login = new LoginController(console,db);
         terminator = new TerminateProgram();//TODO added features; &&& Make terminate static;
         guest = new GuestController(console,db);
+        FlightGenerator.generation(db);
+
     }
+
     public void run(){
-        db.__init__();
         while(true) {
                 console.print(Messages.showFirsPageMenu());
                 int choice = Parser.getUserChoice(console);

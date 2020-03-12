@@ -36,7 +36,5 @@ public class FlightService {
                 flight.flightNumber.equals(flightNumber))
                 .sorted(Comparator.comparingInt(f -> f.ID))
                 .collect(Collectors.toList());
-
     }
-
 }

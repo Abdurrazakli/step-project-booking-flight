@@ -1,5 +1,7 @@
 package util;
 
+import dao.Database;
+import dao.FileOperations;
 import entity.Airline;
 import entity.Airport;
 import entity.Flight;
@@ -30,5 +32,10 @@ public class FlightGenerator {
     private static int randomGenerator(int start,int bound){
         Random rand = new Random();
         return rand.nextInt(bound-start)+start+1;
+    }
+
+    public static void generation(Database db) {
+        FileOperations<Flight> flightFileOperations = new FileOperations<>();
+        generate().forEach(flight -> flightFileOperations.write(FLIGHT_DB_PATH,generate()));
     }
 }
