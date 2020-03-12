@@ -17,7 +17,6 @@ public class FlightController {
         console.print("=============All Flights==============");
         flightService
                 .getFlights()
-                .stream()
                 .forEach(f->console.print(String.format("%d. %s",f.ID,f.toString())));
     }
     public void showAllFlightByFlightNumber(String FN){
@@ -26,7 +25,7 @@ public class FlightController {
             console.print("There is not such a flight.\nMake sure it is valid FN");
         }else {
             console.print("==============Flights============");
-            filtered.stream().forEach(f->console.print(String.format("%d. %s",f.ID,f.toString())));
+            filtered.forEach(f->console.print(String.format("%d. %s",f.ID,f.toString())));
         }
     }
     public void showSearchedFlight(List<Flight> filtered){
