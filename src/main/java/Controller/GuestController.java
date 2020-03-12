@@ -5,6 +5,7 @@ import dao.Database;
 import exceptions.InvalidInput;
 import ui.Console;
 import ui.Messages;
+import util.Parser;
 import util.TerminateProgram;
 
 public class GuestController {
@@ -28,7 +29,7 @@ public class GuestController {
 
             try{
                 console.print(Messages.showGuestMenu());
-                choice = Integer.parseInt(console.readLine());
+                choice = Parser.getUserChoice(console);
                 if(choice > operations_count || choice < 0){
                     throw new InvalidInput("Invalid input of user");
                 }
@@ -53,9 +54,6 @@ public class GuestController {
                         default:break;
                     }
                 }
-            }
-            catch (NumberFormatException ex){
-                    console.print("Only numbers");
             }
             catch (InvalidInput ex){
                 console.print(ex.getMessage());
