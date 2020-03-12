@@ -1,17 +1,29 @@
 package Controller;
 
+import dao.Database;
 import dao.UserDAO;
 import entity.User;
-import service.RegisterService;
 import service.UserService;
 import ui.Console;
 import util.ValidatorMain;
 
 public class RegisterController {
-    UserService userService = new UserService();
-    Console console = new  Console();
-    ValidatorMain validatorMain = new ValidatorMain();
-    String name,surname,username,password;
+
+    Console console;
+    Database db;
+    ValidatorMain validatorMain;
+    UserService userService;
+    String name;
+    String surname;
+    String username;
+    String password;
+
+    public RegisterController(Console console, Database db) {
+        this.console = console;
+        this.db = db;
+        validatorMain = new ValidatorMain(db);
+        userService = new UserService(db);
+    }
 
     public boolean register(){
                 console.print("====Registration Form====");
@@ -43,6 +55,6 @@ public class RegisterController {
                 console.print("Registered!");
                 User user = new User(name, surname, username, password);
                 console.print(String.format("%15s welcome!",username));
-                return userService.createNewUser(user);
+                return userService.createNewUser(user);//db
     }
 }

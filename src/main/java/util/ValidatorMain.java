@@ -1,10 +1,16 @@
 package util;
 
+import dao.Database;
 import service.UserService;
 
 public class ValidatorMain {
+    private Database db;
+    UserService userService;
+    public ValidatorMain(Database db){
+        this.db = db;
+        userService = new UserService(db);
+    }
 
-    UserService userService = new UserService();
     public boolean validateUsername(String username){
         return userService.checkUsername(username);
     }

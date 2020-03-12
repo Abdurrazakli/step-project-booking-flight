@@ -1,21 +1,23 @@
 package service;
 
+import dao.Database;
 import dao.UserDAO;
 import entity.User;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class UserService {
-    private UserDAO userDAO = new UserDAO();
+    private Database db;
+    public UserService(Database db) {
+        this.db = db;
+    }
 
     public boolean checkUsername(String username) {
-        return userDAO.getAll().stream().anyMatch(user -> user.username.equals(username));
+        return db.userDAO.getAll().stream().anyMatch(user -> user.username.equals(username));
     }
 
     public Optional<User> checkUsernameAndPassword(String username, String password){
-        Optional<User> user = userDAO.getAll().stream().filter(user1 -> user1.username.equals(username)).findAny();
+        Optional<User> user = db.userDAO.getAll().stream().filter(user1 -> user1.username.equals(username)).findAny();
         if(user.isPresent() && user.get().password.equals(password)){
             return user;
         }
@@ -23,11 +25,7 @@ public class UserService {
     }
 
     public boolean createNewUser(User user){
-        return userDAO.create(user);
+        return db.userDAO.create(user);
     }
 
-    public void logout(){
-        // what to do???
-        throw new IllegalArgumentException("Not impl yet");
-    }
 }

@@ -3,14 +3,18 @@ package dao;
 import entity.Flight;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class FlightDAO implements DAO<Flight> {
-    private final String FLIGHT_DB_PATH = "./data/flights.bin";
-    private Database<Flight> db = new Database<>();
+    private final String FLIGHT_DB_PATH;
+    private FileOperations<Flight> db = new FileOperations<>();
+
+    public FlightDAO(String flight_db_path) {
+        FLIGHT_DB_PATH = flight_db_path;
+    }
+
     @Override
     public Optional<Flight> get(int id) {
         return  Optional.of(getAll()

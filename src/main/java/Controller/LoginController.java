@@ -1,8 +1,7 @@
 package Controller;
 
+import dao.Database;
 import entity.User;
-import service.FlightService;
-import service.LoginService;
 import service.UserService;
 import ui.Console;
 import ui.Messages;
@@ -12,19 +11,24 @@ import util.TerminateProgram;
 import java.util.Optional;
 
 public class LoginController {
-    private LoginService loginService = new LoginService();
-    private UserService userService = new UserService();
-    private FlightController flightController = new FlightController();
-    private FlightService flightService = new FlightService();
-    private BookingController bookingController = new BookingController();
-    private TerminateProgram terminator = new TerminateProgram();
-    private Console console = new Console();
-    private Parser parser = new Parser();
+    private UserService userService;
+    private FlightController flightController;
+    private BookingController bookingController;
+    private TerminateProgram terminator;
+    private Console console;
+    private Database db;
     private String username;
     private String password;
-    private String destination,date,numberOfSeats;
     private int userChoice;
-
+    public LoginController(Console console,Database db){
+        this.console = console;
+        this.db = db;
+        flightController = new FlightController(this.console, db);
+        bookingController = new BookingController(this.console,db);
+        userService = new UserService(db);
+        bookingController = new BookingController(this.console,db);
+        terminator = new TerminateProgram();
+    }
     public Optional<User> login(){
         console.print("Please enter your username: ");
         username = console.readLine();
@@ -45,12 +49,7 @@ public class LoginController {
             boolean logout=false;
             console.print(Messages.showLoggedUserMenu());
             console.print("Heyyo welcome!");
-            String s = console.readLine();
-            if(parser.strToInt(s).isPresent()){
-                userChoice =parser.strToInt(s).get();
-            }else {
-                console.print("Please enter an integer");
-            }
+            userChoice = Parser.getUserChoice(console);
             switch (userChoice){
                 case 1: flightController.showAllFlights();break;
                 case 2: flightController.showAllFlightByFlightNumber(getFlightNumber());break;
@@ -61,14 +60,16 @@ public class LoginController {
                 case 7: logout=true;break;
                 case 8: terminator.terminate();
                 default:console.print("Enter a valid command!");break;
-
             }
             if(logout){
+                console.print("Never come back!");
                 break;
             }
         }
 
     }
+
+
 
     private String getFlightNumber() {
         console.print("Enter Flight Number: (for ex:TCN345)");

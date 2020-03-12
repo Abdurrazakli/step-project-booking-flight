@@ -1,18 +1,25 @@
 package Controller;
 
+import dao.Database;
 import entity.Flight;
 import service.FlightService;
 import ui.Console;
 import util.NumberCheck;
-
-import java.util.Comparator;
 import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public class FlightController {
-    private FlightService flightService = new FlightService();
-    private Console console = new Console();
+    private Console console;
+    private Database db;
+    private FlightService flightService;
+
+
+    public FlightController(Console console, Database db) {
+        this.console = console;
+        this.db = db;
+        flightService = new FlightService(db);
+    }
+
+
     public void showAllFlights(){
         console.print("=============All Flights==============");
         flightService

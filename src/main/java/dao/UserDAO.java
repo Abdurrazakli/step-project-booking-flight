@@ -1,6 +1,5 @@
 package dao;
 
-import entity.Flight;
 import entity.User;
 
 import java.util.*;
@@ -8,8 +7,13 @@ import java.util.stream.Collectors;
 
 public class UserDAO implements DAO<User>{
 
-    private final String USER_DB_PATH ="./data/users.bin";
-    Database<User> db = new Database<>();
+    private final String USER_DB_PATH;
+    FileOperations<User> fileOperations = new FileOperations<>();
+
+    public UserDAO(String user_db_path) {
+        this.USER_DB_PATH = user_db_path;
+    }
+
 
     @Override
     public Optional<User> get(int id) { //TODO: Finding user with id??? or username
@@ -22,14 +26,14 @@ public class UserDAO implements DAO<User>{
 
     @Override
     public List<User> getAll() {
-        return db.read(USER_DB_PATH);
+        return fileOperations.read(USER_DB_PATH);
     }
 
     @Override
     public boolean create(User newUser) {
         List<User> users = new ArrayList<>(getAll());
         users.add(newUser);
-        return db.write(USER_DB_PATH,users);
+        return fileOperations.write(USER_DB_PATH,users);
     }
 
     @Override
@@ -37,7 +41,7 @@ public class UserDAO implements DAO<User>{
         List<User> all =  getAll();
         List<User> deleted = all.stream().filter(f -> f.ID != id).collect(Collectors.toList());
         if (all.size() == deleted.size()) return false;
-        return db.write(USER_DB_PATH,deleted);
+        return fileOperations.write(USER_DB_PATH,deleted);
     }
 
 }

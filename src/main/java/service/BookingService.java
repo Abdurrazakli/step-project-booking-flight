@@ -1,14 +1,19 @@
 package service;
 
 import dao.BookingDAO;
+import dao.Database;
 import entity.Booking;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class BookingService {
-    private BookingDAO bookingDAO = new BookingDAO();
+    private Database db;
+    public BookingService(Database db) {
+        this.db = db;
+    }
+
     public List<Booking> getAllBookings(String authenticatedUsername){
-        return bookingDAO.getAll().stream().filter(booking ->
+        return db.bookingDAO.getAll().stream().filter(booking ->
                 booking.user.username.equals(authenticatedUsername))
                 .collect(Collectors.toList());
     }
@@ -21,10 +26,10 @@ public class BookingService {
     }
 
     public boolean bookAFlight(Booking booking){
-        return bookingDAO.create(booking);
+        return db.bookingDAO.create(booking);
     }
 
     public boolean cancelBooking(int bookingID){
-        return bookingDAO.delete(bookingID);
+        return db.bookingDAO.delete(bookingID);
     }
 }

@@ -1,17 +1,25 @@
 package Controller;
 
 
+import dao.Database;
 import exceptions.InvalidInput;
-import service.FlightService;
 import ui.Console;
 import ui.Messages;
 import util.TerminateProgram;
 
 public class GuestController {
-    private FlightService flightService = new FlightService();
-    private FlightController flightController = new FlightController();
+
     private TerminateProgram terminator = new TerminateProgram();
-    private Console console = new Console();
+    private Console console;
+    private Database db;
+    private FlightController flightController;
+
+    public GuestController(Console console, Database db) {
+        this.console = console;
+        this.db = db;
+        flightController = new FlightController(console, db);
+    }
+
     public void start(){
         int choice = 0;
         int operations_count = 4;

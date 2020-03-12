@@ -1,30 +1,36 @@
 import Controller.*;
 import dao.Database;
+import dao.FileOperations;
 import entity.Flight;
 import ui.*;
-import util.FlightGenerator;
 import util.TerminateProgram;
 
 public class BookingManager {
-    private final BookingController bookingController = new BookingController();
-    private GuestController guest = new GuestController();
-    private RegisterController register = new RegisterController();
-    private LoginController login = new LoginController();
-    private final Console console = new Console();
-    private TerminateProgram terminator = new TerminateProgram();
-    Database<Flight> db = new Database<>();
-    int choice;
+    private RegisterController register;
+    private LoginController login;
+    private TerminateProgram terminator;
+    private Database db;
+    private Console console;
+    private GuestController guest;
+    public BookingManager(){
+        console = new Console();
+        db = new Database();
+        register = new RegisterController(console,db);
+        login = new LoginController(console,db);
+        terminator = new TerminateProgram();//TODO added features; &&& Make terminate static;
+        guest = new GuestController(console,db);
+    }
     public void run(){
         db.__init__();
         while(true) {
                 console.print(Messages.showFirsPageMenu());
                 int choice = Integer.parseInt(console.readLine());
-                switch (choice){//guest,register,login,exit
+                switch (choice){
                     case 1:
                         guest.start();
                         break;
                     case 2:
-                        register.register();
+                        register.register();//console,
                         break;
                     case 3:
                         login.login();

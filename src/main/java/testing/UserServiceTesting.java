@@ -6,10 +6,10 @@ import service.UserService;
 
 public class UserServiceTesting {
     public static void main(String[] args) {
-        User user = new User("a","soy","uname","parol");
-        UserDAO dao = new UserDAO();
-        UserService userService = new UserService();
-        dao.create(user);
-        System.out.println(userService.checkUsername(user.username));
+//        User user = new User("a","soy","uname","parol");
+//        UserDAO dao = new UserDAO(user_db_path);
+//        UserService userService = new UserService();
+//        dao.create(user);
+//        System.out.println(userService.checkUsername(user.username));
     }
 }
