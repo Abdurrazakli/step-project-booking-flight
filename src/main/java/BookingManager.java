@@ -3,6 +3,7 @@ import dao.Database;
 import dao.FileOperations;
 import entity.Flight;
 import ui.*;
+import util.Parser;
 import util.TerminateProgram;
 
 public class BookingManager {
@@ -24,7 +25,7 @@ public class BookingManager {
         db.__init__();
         while(true) {
                 console.print(Messages.showFirsPageMenu());
-                int choice = Integer.parseInt(console.readLine());
+                int choice = Parser.getUserChoice(console);
                 switch (choice){
                     case 1:
                         guest.start();
