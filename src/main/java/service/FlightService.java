@@ -13,7 +13,7 @@ public class FlightService {
     private Database db;
     public FlightService(Database db) {
         this.db = db;
-    }
+    }   //
 
     public List<Flight> getFlights(){
         return db.flightDAO.getAll()
