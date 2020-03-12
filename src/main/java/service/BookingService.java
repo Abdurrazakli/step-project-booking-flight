@@ -24,7 +24,7 @@ public class BookingService {
         return bookingDAO.create(booking);
     }
 
-    public boolean cancelBooking(Booking booked){
-        return bookingDAO.delete(booked.ID);
+    public boolean cancelBooking(int bookingID){
+        return bookingDAO.delete(bookingID);
     }
 }

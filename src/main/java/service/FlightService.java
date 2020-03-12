@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class FlightService {
 
-    FlightDAO flightDAO = new FlightDAO();
+    private FlightDAO flightDAO = new FlightDAO();
 
     public List<Flight> getFlights(){
         return flightDAO.getAll()
@@ -35,6 +35,7 @@ public class FlightService {
                 flight.flightNumber.equals(flightNumber))
                 .sorted(Comparator.comparingInt(f -> f.ID))
                 .collect(Collectors.toList());
+
     }
 
 }

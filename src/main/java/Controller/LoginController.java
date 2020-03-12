@@ -12,25 +12,19 @@ import util.TerminateProgram;
 import java.util.Optional;
 
 public class LoginController {
-    LoginService loginService = new LoginService();
-    UserService userService = new UserService();
-    FlightController flightController = new FlightController();
-    FlightService flightService = new FlightService();
-    BookingController bookingController = new BookingController();
-    TerminateProgram terminator = new TerminateProgram();
-    Console console = new Console();
-    Parser parser = new Parser();
-    String username;
-    String password;
-    String destination,date,numberOfSeats;
-    int userChoice;
-    /*
-        todo login boolean qaytarsin.
-     Loginle bagli butun prosedurlar bu loginin icinde bas versin
-     message gostermek
-     menyu secimlerini etmek
-     onlara uygun lazimi servisleri cagirmaq
-     */
+    private LoginService loginService = new LoginService();
+    private UserService userService = new UserService();
+    private FlightController flightController = new FlightController();
+    private FlightService flightService = new FlightService();
+    private BookingController bookingController = new BookingController();
+    private TerminateProgram terminator = new TerminateProgram();
+    private Console console = new Console();
+    private Parser parser = new Parser();
+    private String username;
+    private String password;
+    private String destination,date,numberOfSeats;
+    private int userChoice;
+
     public Optional<User> login(){
         console.print("Please enter your username: ");
         username = console.readLine();
@@ -46,8 +40,9 @@ public class LoginController {
             return Optional.empty();
         }
     }
-    private void loginMenu(User user){
+    private void loginMenu(User LOGGED_IN_USER){
         while(true){
+            boolean logout=false;
             console.print(Messages.showLoggedUserMenu());
             console.print("Heyyo welcome!");
             String s = console.readLine();
@@ -60,12 +55,16 @@ public class LoginController {
                 case 1: flightController.showAllFlights();break;
                 case 2: flightController.showAllFlightByFlightNumber(getFlightNumber());break;
                 case 3: flightController.showSearchedFlight(flightController.searchFlights());break;
-                case 4: bookingController.bookMe(user); break;
-                case 5: console.print("implement case 5 login");break;
-                case 6: console.print("implement case 6 login");break;
-                case 7: terminator.terminate();
+                case 4: bookingController.bookMe(LOGGED_IN_USER); break;
+                case 5: bookingController.cancelMyFlight(LOGGED_IN_USER);break;
+                case 6: bookingController.myFlights(LOGGED_IN_USER);break;
+                case 7: logout=true;break;
+                case 8: terminator.terminate();
                 default:console.print("Enter a valid command!");break;
 
+            }
+            if(logout){
+                break;
             }
         }
 

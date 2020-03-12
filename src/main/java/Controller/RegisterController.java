@@ -42,7 +42,7 @@ public class RegisterController {
                 }
                 console.print("Registered!");
                 User user = new User(name, surname, username, password);
-                System.out.println(username);
+                console.print(String.format("%15s welcome!",username));
                 return userService.createNewUser(user);
     }
 }

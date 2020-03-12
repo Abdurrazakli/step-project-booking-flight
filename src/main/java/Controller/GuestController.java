@@ -8,14 +8,16 @@ import ui.Messages;
 import util.TerminateProgram;
 
 public class GuestController {
-    FlightService flightService = new FlightService();
-    FlightController flightController = new FlightController();
-    TerminateProgram terminator = new TerminateProgram();
-    Console console = new Console();
+    private FlightService flightService = new FlightService();
+    private FlightController flightController = new FlightController();
+    private TerminateProgram terminator = new TerminateProgram();
+    private Console console = new Console();
     public void start(){
         int choice = 0;
         int operations_count = 4;
         while (true) {
+            boolean LOG_OUT=false;
+
             try{
                 console.print(Messages.showGuestMenu());
                 choice = Integer.parseInt(console.readLine());
@@ -35,6 +37,9 @@ public class GuestController {
                             flightController.showSearchedFlight(flightController.searchFlights());
                             break;
                         case 4:
+                            LOG_OUT=true;
+                            break;
+                        case 5:
                             terminator.terminate();
                             break;
                         default:break;
@@ -46,6 +51,9 @@ public class GuestController {
             }
             catch (InvalidInput ex){
                 console.print(ex.getMessage());
+            }
+            if(LOG_OUT){
+                break;
             }
         }
     }

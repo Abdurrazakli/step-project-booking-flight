@@ -11,24 +11,20 @@ import service.FlightService;
 import ui.Console;
 import util.NumberCheck;
 import util.Parser;
-
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class BookingController {
-    Parser parser = new Parser();
-    Console console = new Console();
-    BookingService bookingService = new BookingService();
-    FlightService flightService = new FlightService();
-    FlightController flightController = new FlightController();
-    int seatCount;
-    String passengerName, passengerSurname;
-    List<Passenger> passengers;
-    List<Flight> flights;
+    private Parser parser = new Parser();
+    private Console console = new Console();
+    private BookingService bookingService = new BookingService();
+    private FlightService flightService = new FlightService();
+    private FlightController flightController = new FlightController();
+    private String passengerName, passengerSurname;
+    private List<Passenger> passengers = new ArrayList<>();
+    private List<Flight> flights;
 
     public void bookMe(User user) {
         String destination;
@@ -75,6 +71,28 @@ public class BookingController {
         } catch (OutOfBound ex) {
             console.print(String.format("%s\nEnter again", ex.getMessage()));
             return getFlightId();
+        }
+    }
+
+    public void myFlights(User currentUser){
+        console.print("======My flights======");
+        if(!bookingService.getAllBookings(currentUser.username).isEmpty()){
+            bookingService.getAllBookings(currentUser.username)
+                    .forEach(System.out::println);
+        }else {
+            console.print("You did not book a flight yet!");
+        }
+
+    }
+
+    public void cancelMyFlight(User currentUser) {
+        myFlights(currentUser);
+        console.print("Choose booking ID to cancel!");
+        int bookID = NumberCheck.getNumber(console.readLine());
+        if (bookingService.cancelBooking(bookID)) {
+            console.print("Booking canceled successfully!");
+        } else {
+            console.print("Can not cancel specified booking");
         }
     }
 }

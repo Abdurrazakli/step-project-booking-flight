@@ -11,7 +11,8 @@ public class Messages {
         sb.append("|1. Show all flights                         |\n");
         sb.append("|2. Show the flight info by flightNumber     |\n");
         sb.append("|3. Search a flight                          |\n");
-        sb.append("|4. Exit                                     |\n");
+        sb.append("|4. Back To Main Menu                        |\n");
+        sb.append("|5. Exit                                     |\n");
         sb.append("|============================================|\n");
         return sb.toString();
     }
@@ -42,7 +43,8 @@ public class Messages {
         sb.append("|4. Book a flight                            |\n");
         sb.append("|5. Cancel booking                           |\n");
         sb.append("|6. My flights                               |\n");
-        sb.append("|7. Exit                                     |\n");
+        sb.append("|7. Log Out                                  |\n");
+        sb.append("|8. Exit                                     |\n");
         sb.append("|============================================|\n");
         return sb.toString();
     }
