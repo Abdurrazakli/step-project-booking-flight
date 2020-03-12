@@ -3,6 +3,8 @@ package service;
 import dao.BookingDAO;
 import dao.Database;
 import entity.Booking;
+
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,6 +29,10 @@ public class BookingService {
 
     public boolean bookAFlight(Booking booking){
         return db.bookingDAO.create(booking);
+    }
+    public int getNextID(String username){
+        List<Booking> collect = getAllBookings(username).stream().sorted((a, b) -> b.ID - a.ID).collect(Collectors.toList());
+        return collect.isEmpty() ? 100000 : collect.get(0).ID+1;
     }
 
     public boolean cancelBooking(int bookingID){

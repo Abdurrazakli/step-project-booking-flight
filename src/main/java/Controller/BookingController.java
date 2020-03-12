@@ -59,7 +59,7 @@ public class BookingController {
                 passengers.add(new Passenger(passengerName, passengerSurname));
             }
             Flight flight = flights.stream().filter(f -> f.ID == flightId).collect(Collectors.toList()).get(0);
-            Booking booking = new Booking(flight, user, passengers, LocalDate.now());
+            Booking booking = new Booking(bookingService.getNextID(user.username),flight, user, passengers, LocalDate.now());
             if (bookingService.bookAFlight(booking)) {
                 console.print("Succesfully booked");
                 console.print(booking.toString());
