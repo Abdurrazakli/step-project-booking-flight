@@ -17,8 +17,8 @@ class BookingServiceTest {
         Flight f = new Flight(12,"THY358", Airport.ATL,Airport.AGD,100,10,LocalDate.now());
         List<Passenger> passengers = new ArrayList<>();
         passengers.add(new Passenger("p1name","p1surname"));
-        User user = new User("uname","u")
-        Booking b1 = new Booking(1,f,passengers,)
+        //User user = new User("uname","u")
+       // Booking b1 = new Booking(1,f,passengers,)
     }
 
     @Test
