@@ -6,13 +6,13 @@ import java.time.ZonedDateTime;
 import java.util.Objects;
 
 public class Flight implements Serializable {
-    public final int ID;
-    public final String flightNumber;
-    public final Airport from;
-    public final Airport to;
-    public final int price;
-    public final int seats;
-    public final LocalDate flightDate;
+    private final int ID;
+    private final String flightNumber;
+    private final Airport from;
+    private final Airport to;
+    private final int price;
+    private final int seats;
+    private final LocalDate flightDate;
 
     public Flight(int id, String flightNumber, Airport from, Airport to, int price, int seats, LocalDate startDate) {
         this.ID = id;
@@ -22,6 +22,34 @@ public class Flight implements Serializable {
         this.price = price;
         this.seats = seats;
         this.flightDate = startDate;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public String getFlightNumber() {
+        return flightNumber;
+    }
+
+    public Airport getFrom() {
+        return from;
+    }
+
+    public Airport getTo() {
+        return to;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public int getSeats() {
+        return seats;
+    }
+
+    public LocalDate getFlightDate() {
+        return flightDate;
     }
 
     private String represent(){

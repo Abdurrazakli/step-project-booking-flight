@@ -4,13 +4,22 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Passenger implements Serializable {
-    public final String name;
-    public final String surname;
+    private final String name;
+    private final String surname;
 
     public Passenger(String name, String surname) {
         this.name = name;
         this.surname = surname;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
     private String represent(){
         return String.format("%s %s",name,surname);
     }

@@ -5,11 +5,11 @@ import java.util.Objects;
 
 public class User implements Serializable {
     private static int idCounter=1;
-    public final int ID;
-    public final String name;
-    public final String surname;
-    public final String username;
-    public final String password;
+    private final int ID;
+    private final String name;
+    private final String surname;
+    private final String username;
+    private final String password;
 
     public User(String name, String surname, String username, String password) {
         this.ID = idCounter++;
@@ -17,6 +17,26 @@ public class User implements Serializable {
         this.surname = surname;
         this.username = username;
         this.password = password;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public static void setIdCounter(int idCounter) {

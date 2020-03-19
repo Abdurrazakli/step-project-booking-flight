@@ -19,7 +19,7 @@ public class FlightDAO implements DAO<Flight> {
     public Optional<Flight> get(int id) {
         return  Optional.of(getAll()
                 .stream()
-                .filter(f->f.ID == id)
+                .filter(f->f.getID() == id)
                 .collect(Collectors.toList())
                 .get(0));
     }
@@ -42,7 +42,7 @@ public class FlightDAO implements DAO<Flight> {
     @Override
     public boolean delete(int id) {
         List<Flight> all =  getAll();
-        List<Flight> deleted = all.stream().filter(f -> f.ID != id).collect(Collectors.toList());
+        List<Flight> deleted = all.stream().filter(f -> f.getID() != id).collect(Collectors.toList());
         if (all.size() == deleted.size()) return false;
         return db.write(FLIGHT_DB_PATH,deleted);
     }

@@ -13,12 +13,12 @@ public class UserService {
     }
 
     public boolean checkUsername(String username) {
-        return db.userDAO.getAll().stream().anyMatch(user -> user.username.equals(username));
+        return db.userDAO.getAll().stream().anyMatch(user -> user.getUsername().equals(username));
     }
 
     public Optional<User> checkUsernameAndPassword(String username, String password){
-        Optional<User> user = db.userDAO.getAll().stream().filter(user1 -> user1.username.equals(username)).findAny();
-        if(user.isPresent() && user.get().password.equals(password)){
+        Optional<User> user = db.userDAO.getAll().stream().filter(user1 -> user1.getUsername().equals(username)).findAny();
+        if(user.isPresent() && user.get().getPassword().equals(password)){
             return user;
         }
         return Optional.empty();

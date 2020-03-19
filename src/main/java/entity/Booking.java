@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.Objects;
 
 public class Booking implements Serializable {
-    public final int ID;
-    public final Flight flight;
-    public final User user;
-    public final List<Passenger> passengers;
-    public final LocalDate bookingDate;
+    private final int ID;
+    private final Flight flight;
+    private final User user;
+    private final List<Passenger> passengers;
+    private final LocalDate bookingDate;
 
     public Booking(int id, Flight flight, User user, List<Passenger> passengers, LocalDate bookingDate) {
         this.ID = id;
@@ -20,6 +20,26 @@ public class Booking implements Serializable {
         this.user = user;
         this.passengers = passengers;
         this.bookingDate = bookingDate;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public Flight getFlight() {
+        return flight;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public List<Passenger> getPassengers() {
+        return passengers;
+    }
+
+    public LocalDate getBookingDate() {
+        return bookingDate;
     }
 
     @Override
@@ -38,7 +58,7 @@ public class Booking implements Serializable {
     }
     private String represent(){
         return String.format("%d. FN: %s From: %s To: %s Time: %s Ordered by:%s Passengers:%s Order date:%s}",
-                ID, flight.flightNumber,flight.from,flight.to,flight.flightDate,user.username,passengers,bookingDate);
+                ID, flight.getFlightNumber(),flight.getFrom(),flight.getTo(),flight.getFlightDate(),user.getUsername(),passengers,bookingDate);
     }
     @Override
     public String toString() {

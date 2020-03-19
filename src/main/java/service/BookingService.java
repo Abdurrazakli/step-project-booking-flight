@@ -16,14 +16,14 @@ public class BookingService {
 
     public List<Booking> getAllBookings(String authenticatedUsername){
         return db.bookingDAO.getAll().stream().filter(booking ->
-                booking.user.username.equals(authenticatedUsername))
+                booking.getUser().getUsername().equals(authenticatedUsername))
                 .collect(Collectors.toList());
     }
 
     public List<Booking> getFlightsByFullName(String username, String name, String surname){
         return getAllBookings(username).stream().filter(booking ->
-                booking.passengers.stream().anyMatch(passenger ->
-                        passenger.name.equals(name) && passenger.surname.equals(surname)))
+                booking.getPassengers().stream().anyMatch(passenger ->
+                        passenger.getName().equals(name) && passenger.getSurname().equals(surname)))
                 .collect(Collectors.toList());
     }
 
@@ -31,8 +31,8 @@ public class BookingService {
         return db.bookingDAO.create(booking);
     }
     public int getNextID(String username){
-        List<Booking> collect = getAllBookings(username).stream().sorted((a, b) -> b.ID - a.ID).collect(Collectors.toList());
-        return collect.isEmpty() ? 100000 : collect.get(0).ID+1;
+        List<Booking> collect = getAllBookings(username).stream().sorted((a, b) -> b.getID() - a.getID()).collect(Collectors.toList());
+        return collect.isEmpty() ? 100000 : collect.get(0).getID()+1;
     }
 
     public boolean cancelBooking(int bookingID){

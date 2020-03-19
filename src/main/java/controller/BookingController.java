@@ -57,8 +57,8 @@ public class BookingController {
                 passengerSurname = console.readLine();
                 passengers.add(new Passenger(passengerName, passengerSurname));
             }
-            Flight flight = flights.stream().filter(f -> f.ID == flightId).collect(Collectors.toList()).get(0);
-            Booking booking = new Booking(bookingService.getNextID(user.username),flight, user, passengers, LocalDate.now());
+            Flight flight = flights.stream().filter(f -> f.getID() == flightId).collect(Collectors.toList()).get(0);
+            Booking booking = new Booking(bookingService.getNextID(user.getUsername()),flight, user, passengers, LocalDate.now());
             if (bookingService.bookAFlight(booking)) {
                 console.print("Succesfully booked");
                 console.print(booking.toString());
@@ -70,7 +70,7 @@ public class BookingController {
     private int getFlightId() {
         try {
             int id = Parser.getUserChoice(console);
-            if (id > flights.get(flights.size() - 1).ID) {
+            if (id > flights.get(flights.size() - 1).getID()) {
                 throw new OutOfBound("Entered id is not valid");
             }
             return id;
@@ -82,8 +82,8 @@ public class BookingController {
 
     public void myFlights(User currentUser){
         console.print("======My flights======");
-        if(!bookingService.getAllBookings(currentUser.username).isEmpty()){
-            bookingService.getAllBookings(currentUser.username)
+        if(!bookingService.getAllBookings(currentUser.getUsername()).isEmpty()){
+            bookingService.getAllBookings(currentUser.getUsername())
                     .forEach(System.out::println);
         }else {
             console.print("You did not book a flight yet!");

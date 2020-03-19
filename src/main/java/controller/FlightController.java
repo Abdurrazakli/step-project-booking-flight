@@ -25,7 +25,7 @@ public class FlightController {
         console.print("=============All Flights==============");
         flightService
                 .getFlights()
-                .forEach(f->console.print(String.format("%d. %s",f.ID,f.toString())));
+                .forEach(f->console.print(String.format("%d. %s",f.getID(),f.toString())));
     }
     public void showAllFlightByFlightNumber(String FN){
         List<Flight> filtered = flightService.getFlightsByFlightNumber(FN.toUpperCase());
@@ -33,7 +33,7 @@ public class FlightController {
             console.print("There is not such a flight.\nMake sure it is valid FN");
         }else {
             console.print("==============Flights============");
-            filtered.forEach(f->console.print(String.format("%d. %s",f.ID,f.toString())));
+            filtered.forEach(f->console.print(String.format("%d. %s",f.getID(),f.toString())));
         }
     }
     public void showSearchedFlight(List<Flight> filtered){
@@ -41,7 +41,7 @@ public class FlightController {
             console.print("There is not such a flight.\n");
         }else {
             console.print("==============Flights============");
-            filtered.forEach(f->console.print(String.format("%d. %s",f.ID,f.toString())));
+            filtered.forEach(f->console.print(String.format("%d. %s",f.getID(),f.toString())));
         }
     }
     public List<Flight> searchFlights(){

@@ -19,7 +19,7 @@ public class BookingDAO implements DAO<Booking> {
     public Optional get(int id) {
        return Optional.of(getAll()
                .stream()
-               .filter(b->b.ID == id)
+               .filter(b->b.getID() == id)
                .collect(Collectors.toList())
                .get(0));
     }
@@ -39,7 +39,7 @@ public class BookingDAO implements DAO<Booking> {
     @Override
     public boolean delete(int id) {
         List<Booking> all =  getAll();
-        List<Booking> deleted = all.stream().filter(b -> b.ID != id).collect(Collectors.toList());
+        List<Booking> deleted = all.stream().filter(b -> b.getID() != id).collect(Collectors.toList());
         if (all.size() == deleted.size()) return false;
         return db.write(BOOKING_DB_PATH,deleted);
     }

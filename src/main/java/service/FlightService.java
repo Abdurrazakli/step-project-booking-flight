@@ -18,23 +18,23 @@ public class FlightService {
     public List<Flight> getFlights(){
         return db.flightDAO.getAll()
                 .stream()
-                .sorted(Comparator.comparingInt(f -> f.ID))
+                .sorted(Comparator.comparingInt(f -> f.getID()))
                 .collect(Collectors.toList());
     }
 
     public List<Flight> getFlightsByParametr(String destination,int numberOfSeats, String date ){
-        return db.flightDAO.getAll().stream().filter(flight -> flight.to.getName().toUpperCase().equals(destination.toUpperCase()) &&
-                flight.seats>=numberOfSeats &&
-                (flight.flightDate.toString().equals(date) || date.equals("")))
-                .sorted(Comparator.comparingInt(f -> f.ID))
+        return db.flightDAO.getAll().stream().filter(flight -> flight.getTo().getName().toUpperCase().equals(destination.toUpperCase()) &&
+                flight.getSeats()>=numberOfSeats &&
+                (flight.getFlightDate().toString().equals(date) || date.equals("")))
+                .sorted(Comparator.comparingInt(f -> f.getID()))
                 .collect(Collectors.toList());
     }
 
 
     public List<Flight> getFlightsByFlightNumber(String flightNumber){
         return db.flightDAO.getAll().stream().filter(flight ->
-                flight.flightNumber.equals(flightNumber))
-                .sorted(Comparator.comparingInt(f -> f.ID))
+                flight.getFlightNumber().equals(flightNumber))
+                .sorted(Comparator.comparingInt(f -> f.getID()))
                 .collect(Collectors.toList());
     }
 }

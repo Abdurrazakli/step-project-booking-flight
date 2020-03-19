@@ -19,7 +19,7 @@ public class UserDAO implements DAO<User>{
     public Optional<User> get(int id) { //TODO: Finding user with id??? or username
         return  Optional.of(getAll()
                 .stream()
-                .filter(f->f.ID == id)
+                .filter(f->f.getID() == id)
                 .collect(Collectors.toList())
                 .get(0));
     }
@@ -39,7 +39,7 @@ public class UserDAO implements DAO<User>{
     @Override
     public boolean delete(int id) {
         List<User> all =  getAll();
-        List<User> deleted = all.stream().filter(f -> f.ID != id).collect(Collectors.toList());
+        List<User> deleted = all.stream().filter(f -> f.getID() != id).collect(Collectors.toList());
         if (all.size() == deleted.size()) return false;
         return fileOperations.write(USER_DB_PATH,deleted);
     }
