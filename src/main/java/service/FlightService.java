@@ -18,7 +18,7 @@ public class FlightService {
     public List<Flight> getFlights(){
         return db.flightDAO.getAll()
                 .stream()
-                .sorted(Comparator.comparingInt(f -> f.getID()))
+                .sorted(Comparator.comparingInt(Flight::getID))
                 .collect(Collectors.toList());
     }
 

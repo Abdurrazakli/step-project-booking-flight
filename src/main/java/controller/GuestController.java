@@ -9,7 +9,6 @@ import util.Parser;
 import util.TerminateProgram;
 
 public class GuestController {
-
     private TerminateProgram terminator = new TerminateProgram();
     private Console console;
     private Database db;
@@ -25,7 +24,6 @@ public class GuestController {
         int choice = 0;
         while (true) {
             boolean LOG_OUT=false;
-
                 console.print(Messages.showGuestMenu());
                 choice = Parser.getUserChoice(console);
                     switch (choice){

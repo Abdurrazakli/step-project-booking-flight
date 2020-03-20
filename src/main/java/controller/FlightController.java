@@ -52,7 +52,7 @@ public class FlightController {
         destination = console.readLine();
         console.print("Please enter the number of seats:");
         seats = Parser.getUserChoice(console);
-        console.print("Please enter the date:(year-day-month ex:2020-15-03");
+        console.print("Please enter the date:(year-day-month ex:2020-15-03). You can leave empty(just press enter!)");
         date = console.readLine();
         return flightService.getFlightsByParametr(destination,seats,date);
     }

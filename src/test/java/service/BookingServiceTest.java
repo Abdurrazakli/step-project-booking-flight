@@ -28,7 +28,7 @@ class BookingServiceTest {
         bookings = new ArrayList<>();
         passenger = new Passenger("p1name","p1surname");
         passengers.add(passenger);
-        user = new User("TestName","TestSurname",Long.toString(System.currentTimeMillis()),"123456");
+        user =  new User("TestName","TestSurname",Long.toString(System.currentTimeMillis()),"123456");
         booking = new Booking(1, flight,user,passengers,LocalDate.now());
         bookings.add(booking);
         database = new Database();
