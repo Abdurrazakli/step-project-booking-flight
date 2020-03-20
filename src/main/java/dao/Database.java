@@ -16,12 +16,4 @@ public class Database {
         flightDAO = new FlightDAO(FLIGHT_DB_PATH);
         bookingDAO = new BookingDAO(BOOKING_DB_PATH);
     }
-
-    public void setFLIGHT_DB_PATH(String FLIGHT_DB_PATH) {
-        this.FLIGHT_DB_PATH = FLIGHT_DB_PATH;
-    }
-
-    public void setUSER_DB_PATH(String USER_DB_PATH) {
-        this.USER_DB_PATH = USER_DB_PATH;
-    }
 }
