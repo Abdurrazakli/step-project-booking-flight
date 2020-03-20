@@ -30,8 +30,11 @@ public class BookingService {
     public boolean bookAFlight(Booking booking){
         return db.bookingDAO.create(booking);
     }
-    public int getNextID(String username){
-        List<Booking> collect = getAllBookings(username).stream().sorted((a, b) -> b.getID() - a.getID()).collect(Collectors.toList());
+    public int getNextID(){
+        List<Booking> collect = db.bookingDAO.getAll()
+                .stream()
+                .sorted((a, b) -> b.getID() - a.getID())
+                .collect(Collectors.toList());
         return collect.isEmpty() ? 100000 : collect.get(0).getID()+1;
     }
 
