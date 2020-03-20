@@ -58,7 +58,7 @@ public class BookingController {
                 passengers.add(new Passenger(passengerName, passengerSurname));
             }
             Flight flight = flights.stream().filter(f -> f.getID() == flightId).collect(Collectors.toList()).get(0);
-            Booking booking = new Booking(bookingService.getNextID(user.getUsername()),flight, user, passengers, LocalDate.now());
+            Booking booking = new Booking(bookingService.getNextID(),flight, user, passengers, LocalDate.now());
             if (bookingService.bookAFlight(booking)) {
                 console.print("Succesfully booked");
                 console.print(booking.toString());
@@ -80,25 +80,28 @@ public class BookingController {
         }
     }
 
-    public void myFlights(User currentUser){
+    public boolean showMyFlights(User currentUser){
         console.print("======My flights======");
         if(!bookingService.getAllBookings(currentUser.getUsername()).isEmpty()){
             bookingService.getAllBookings(currentUser.getUsername())
-                    .forEach(System.out::println);
+                    .forEach(f->console.print(f.toString()));
+            return true;
         }else {
             console.print("You did not book a flight yet!");
+            return false;
         }
 
     }
 
     public void cancelMyFlight(User currentUser) {
-        myFlights(currentUser);
-        console.print("Choose booking ID to cancel!");
-        int bookID = Parser.getUserChoice(console);
-        if (bookingService.cancelBooking(bookID)) {
-            console.print("Booking canceled successfully!");
-        } else {
-            console.print("Can not cancel specified booking");
+        if(showMyFlights(currentUser)) {
+            console.print("Choose booking ID to cancel!");
+            int bookID = Parser.getUserChoice(console);
+            if (bookingService.cancelBooking(bookID)) {
+                console.print("Booking canceled successfully!");
+            } else {
+                console.print("Can not cancel specified booking");
+            }
         }
     }
 }

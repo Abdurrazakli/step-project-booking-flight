@@ -56,7 +56,7 @@ public class LoginController {
                 case 3: flightController.showSearchedFlight(flightController.searchFlights());break;
                 case 4: bookingController.bookMe(LOGGED_IN_USER); break;
                 case 5: bookingController.cancelMyFlight(LOGGED_IN_USER);break;
-                case 6: bookingController.myFlights(LOGGED_IN_USER);break;
+                case 6: bookingController.showMyFlights(LOGGED_IN_USER);break;
                 case 7: logout=true;break;
                 case 8: terminator.terminate();
                 default:console.print("Enter a valid command!");break;
