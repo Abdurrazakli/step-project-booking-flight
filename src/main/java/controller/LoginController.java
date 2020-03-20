@@ -34,7 +34,7 @@ public class LoginController {
         username = console.readLine();
         console.print("Please enter your password: ");
         password = console.readLine();
-        Optional<User> user = userService.checkUsernameAndPassword(username, password);
+        Optional<User> user = userService.getValidatedUser(username, password);
         if(user.isPresent()){
             console.print("Successfully Logged In!");
             loginMenu(user.get());
