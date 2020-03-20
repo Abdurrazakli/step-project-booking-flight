@@ -12,7 +12,10 @@ public class User implements Serializable {
     private final String password;
 
     public User(String name, String surname, String username, String password) {
-        this.ID = idCounter++;
+        this(idCounter++,name,surname,username,password);
+    }
+    public User(int id,String name, String surname, String username, String password) {
+        this.ID = id;
         this.name = name;
         this.surname = surname;
         this.username = username;
