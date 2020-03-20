@@ -20,11 +20,12 @@ class BookingServiceTest {
     private Flight flight;
     private Passenger passenger;
     private Booking booking;
+    private List<Passenger> passengers;
     private static BookingService bookingService;
     @BeforeEach
     void init(){
         flight = new Flight(12,"THY358", Airport.ATL,Airport.AGD,100,10,LocalDate.now());
-        List<Passenger> passengers = new ArrayList<>();
+        passengers = new ArrayList<>();
         bookings = new ArrayList<>();
         passenger = new Passenger("p1name","p1surname");
         passengers.add(passenger);
@@ -39,7 +40,7 @@ class BookingServiceTest {
     @AfterEach
     void delete(){
         database.flightDAO.delete(flight.getID());
-        database.bookingDAO.delete(booking.getID());
+        database.bookingDAO.getAll().forEach(s-> database.bookingDAO.delete(s.getID()));
         database.userDAO.delete(user.getID());
     }
     @Test
@@ -49,17 +50,33 @@ class BookingServiceTest {
 
     @Test
     void getFlightsByFullName() {
+        assertEquals(bookings,bookingService.getFlightsByFullName(user.getUsername(),passenger.getName(),passenger.getSurname()),
+                "Searched Flights by full name don't match");
     }
+
 
     @Test
     void bookAFlight() {
+        Booking newBook = new Booking((int) System.currentTimeMillis(), flight,user,passengers,LocalDate.now());
+        boolean result = bookingService.bookAFlight(newBook);
+        bookings = bookingService.getAllBookings(user.getUsername());
+        assertTrue(bookings.contains(newBook),"Book a flight doesn't work");
+        bookingService.cancelBooking(newBook.getID());
     }
 
     @Test
     void getNextID() {
+        Booking newBook = new Booking(Integer.MAX_VALUE-1,
+                flight,user,passengers,LocalDate.now());
+        bookingService.bookAFlight(newBook);
+        assertEquals(Integer.MAX_VALUE,bookingService.getNextID(),"Next id doesn't work in a right way");
+        bookingService.cancelBooking(newBook.getID());
     }
 
     @Test
     void cancelBooking() {
+        bookingService.cancelBooking(booking.getID());
+        assertFalse(bookingService.getAllBookings(user.getUsername()).contains(booking),
+                "Cancel booking doesn't work");
     }
 }
