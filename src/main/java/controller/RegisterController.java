@@ -4,13 +4,13 @@ import dao.Database;
 import entity.User;
 import service.UserService;
 import ui.Console;
-import util.ValidatorMain;
+import util.Validator;
 
 public class RegisterController {
 
     Console console;
     Database db;
-    ValidatorMain validatorMain;
+    Validator validatorMain;
     UserService userService;
     String name;
     String surname;
@@ -20,7 +20,7 @@ public class RegisterController {
     public RegisterController(Console console, Database db) {
         this.console = console;
         this.db = db;
-        validatorMain = new ValidatorMain(db);
+        validatorMain = new Validator(db);
         userService = new UserService(db);
     }
 

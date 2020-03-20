@@ -22,12 +22,4 @@ public class Parser {
         }
         return oi.get();
     }
-
-
-    public static void main(String[] args) {
-        Optional<Integer> i1 = Parser.strToInt("123");
-        Optional<Integer> i0 = Parser.strToInt("123a");
-        System.out.println(i1);
-        System.out.println(i0);
-    }
 }

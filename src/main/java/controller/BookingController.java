@@ -10,6 +10,8 @@ import service.BookingService;
 import service.FlightService;
 import ui.Console;
 import util.Parser;
+import util.Validator;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +27,8 @@ public class BookingController {
     private String passengerName, passengerSurname;
     private List<Passenger> passengers;
     private List<Flight> flights;
+    private Validator validator = new Validator(db);
+
 
     public BookingController(Console console, Database db)
     {
@@ -48,7 +52,7 @@ public class BookingController {
         flightController.showSearchedFlight(flights);
         if (flights.size() > 0) {
             console.print("Enter flight index: ");
-            int flightId = Parser.getUserChoice(console);
+            int flightId = validator.inputSearchedFlightValidator(console,flights);
             passengers = new ArrayList<>();
             for (int i = 1; i <= seats; i++) {
                 console.print(String.format("Name of the %d. passenger:", i));

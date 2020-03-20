@@ -3,10 +3,8 @@ package service;
 import dao.Database;
 import entity.Airport;
 import entity.Flight;
-import entity.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
