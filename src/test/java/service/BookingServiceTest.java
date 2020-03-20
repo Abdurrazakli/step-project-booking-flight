@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class BookingServiceTest {
     private List<Booking> bookings;
     private User user;
-    private static Database database;
+    private Database database;
     private Flight flight;
     private Passenger passenger;
     private Booking booking;
