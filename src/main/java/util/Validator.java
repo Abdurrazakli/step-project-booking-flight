@@ -18,7 +18,6 @@ public class Validator {
     }
 
     public int inputSearchedFlightValidator(Console console, List<Flight> flights){
-
         while(true){
             flightIndex = Parser.getUserChoice(console);
             Optional<Flight> foundedFlight = flights.stream().filter(flight ->

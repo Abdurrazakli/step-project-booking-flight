@@ -40,7 +40,7 @@ public class Passenger implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("Passenger: [%s]",represent());
+        return String.format("[%s]",represent());
     }
 
 
