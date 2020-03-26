@@ -14,10 +14,9 @@ public class FlightController {
     private FlightService flightService;
 
 
-    public FlightController(Console console, Database db) {
+    public FlightController(Console console) {
         this.console = console;
-        this.db = db;
-        flightService = new FlightService(db);
+        flightService = new FlightService();
     }
 
 

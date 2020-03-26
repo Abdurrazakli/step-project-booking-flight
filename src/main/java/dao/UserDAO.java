@@ -7,12 +7,8 @@ import java.util.stream.Collectors;
 
 public class UserDAO implements DAO<User>{
 
-    private final String USER_DB_PATH;
+    private final String USER_DB_PATH = "./data/users.bin";
     FileOperations<User> fileOperations = new FileOperations<>();
-
-    public UserDAO(String user_db_path) {
-        this.USER_DB_PATH = user_db_path;
-    }
 
 
     @Override

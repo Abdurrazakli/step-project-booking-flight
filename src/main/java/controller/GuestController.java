@@ -2,7 +2,6 @@ package controller;
 
 
 import dao.Database;
-import exceptions.InvalidInput;
 import ui.Console;
 import ui.Messages;
 import util.Parser;
@@ -11,13 +10,11 @@ import util.TerminateProgram;
 public class GuestController {
     private TerminateProgram terminator = new TerminateProgram();
     private Console console;
-    private Database db;
     private FlightController flightController;
 
-    public GuestController(Console console, Database db) {
+    public GuestController(Console console) {
         this.console = console;
-        this.db = db;
-        flightController = new FlightController(console, db);
+        flightController = new FlightController(console);
     }
 
     public void start(){

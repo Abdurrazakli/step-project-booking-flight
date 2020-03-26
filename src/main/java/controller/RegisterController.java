@@ -9,7 +9,6 @@ import util.Validator;
 public class RegisterController {
 
     Console console;
-    Database db;
     Validator validatorMain;
     UserService userService;
     String name;
@@ -17,11 +16,10 @@ public class RegisterController {
     String username;
     String password;
 
-    public RegisterController(Console console, Database db) {
+    public RegisterController(Console console) {
         this.console = console;
-        this.db = db;
-        validatorMain = new Validator(db);
-        userService = new UserService(db);
+        validatorMain = new Validator();
+        userService = new UserService();
     }
 
     public boolean register(){

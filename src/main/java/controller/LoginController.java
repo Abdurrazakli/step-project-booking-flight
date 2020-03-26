@@ -16,17 +16,15 @@ public class LoginController {
     private BookingController bookingController;
     private TerminateProgram terminator;
     private Console console;
-    private Database db;
     private String username;
     private String password;
     private int userChoice;
-    public LoginController(Console console,Database db){
+    public LoginController(Console console){
         this.console = console;
-        this.db = db;
-        flightController = new FlightController(this.console, db);
-        bookingController = new BookingController(this.console,db);
-        userService = new UserService(db);
-        bookingController = new BookingController(this.console,db);
+        flightController = new FlightController(this.console);
+        bookingController = new BookingController(this.console);
+        userService = new UserService();
+        bookingController = new BookingController(this.console);
         terminator = new TerminateProgram();
     }
     public Optional<User> login(){

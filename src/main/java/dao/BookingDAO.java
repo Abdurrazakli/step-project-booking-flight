@@ -8,12 +8,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class BookingDAO implements DAO<Booking> {
-    private final String BOOKING_DB_PATH;
+    private final String BOOKING_DB_PATH = "./data/bookings.bin";
     private FileOperations<Booking> db = new FileOperations<>();
-
-    public BookingDAO(String booking_db_path) {
-        this.BOOKING_DB_PATH = booking_db_path;
-    }
 
     @Override
     public Optional get(int id) {

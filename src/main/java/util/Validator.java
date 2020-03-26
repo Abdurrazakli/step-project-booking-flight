@@ -12,9 +12,9 @@ public class Validator {
     private Database db;
     UserService userService;
     private int flightIndex;
-    public Validator(Database db){
+    public Validator(){
         this.db = db;
-        userService = new UserService(db);
+        userService = new UserService();
     }
 
     public int inputSearchedFlightValidator(Console console, List<Flight> flights){

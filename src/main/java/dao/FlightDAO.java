@@ -8,12 +8,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class FlightDAO implements DAO<Flight> {
-    private final String FLIGHT_DB_PATH;
+    public static String FLIGHT_DB_PATH = "./data/flights.bin";
     private FileOperations<Flight> db = new FileOperations<>();
-
-    public FlightDAO(String flight_db_path) {
-        FLIGHT_DB_PATH = flight_db_path;
-    }
 
     @Override
     public Optional<Flight> get(int id) {
@@ -27,6 +23,14 @@ public class FlightDAO implements DAO<Flight> {
     @Override
     public List<Flight> getAll() {
         return db.read(FLIGHT_DB_PATH);
+    }
+
+    public boolean update(Flight flight){
+        boolean deleted = delete(flight.getID());
+        if(deleted){
+            create(flight);
+            return true;
+        }return false;
     }
 
     @Override

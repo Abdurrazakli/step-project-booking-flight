@@ -1,6 +1,9 @@
 package service;
 
+import dao.BookingDAO;
 import dao.Database;
+import dao.FlightDAO;
+import dao.UserDAO;
 import entity.User;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,18 +16,18 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserServiceTest {
 
     private User user;
-    private Database database;
     private UserService userService;
+    private UserDAO userDAO;
     @BeforeEach
     void init(){
+        userDAO = new UserDAO();
         user =  new User((int) System.currentTimeMillis(),"TestName","TestSurname",Long.toString(System.currentTimeMillis()),"123456");
-        database = new Database();
-        database.userDAO.create(user);
-        userService = new UserService(database);
+        userDAO.create(user);
+        userService = new UserService();
     }
     @AfterEach
     void delete(){
-        database.userDAO.delete(user.getID());
+        userDAO.delete(user.getID());
     }
     @Test
     void checkUsernameIfItExistReturnTrue() {
@@ -42,7 +45,7 @@ class UserServiceTest {
         User newUser = new User((int) System.currentTimeMillis(),"Apple","PineApple",Long.toString(System.currentTimeMillis()),"123456");
 
         userService.createNewUser(newUser);
-        assertEquals(newUser,database.userDAO.get(newUser.getID()).get(),"User couldn't created");
+        assertEquals(newUser,userDAO.get(newUser.getID()).get(),"User couldn't created");
     }
 
     @Test

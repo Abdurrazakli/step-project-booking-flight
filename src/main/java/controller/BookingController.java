@@ -21,22 +21,20 @@ public class BookingController {
     private FlightController flightController;
 
     private Console console;
-    private Database db;
     private BookingService bookingService;
     private FlightService flightService;
     private String passengerName, passengerSurname;
     private List<Passenger> passengers;
     private List<Flight> flights;
-    private Validator validator = new Validator(db);
+    private Validator validator = new Validator();
 
 
-    public BookingController(Console console, Database db)
+    public BookingController(Console console)
     {
         this.console = console;
-        this.db = db;
-        flightController = new FlightController(this.console, db);
-        bookingService = new BookingService(db);
-        flightService = new FlightService(db);
+        flightController = new FlightController(this.console);
+        bookingService = new BookingService();
+        flightService = new FlightService();
     }
     public void bookMe(User user) {
         String destination;
@@ -62,12 +60,12 @@ public class BookingController {
                 passengers.add(new Passenger(passengerName, passengerSurname));
             }
             Flight flight = flights.stream().filter(f -> f.getID() == flightId).collect(Collectors.toList()).get(0);
-            Booking booking = new Booking(bookingService.getNextID(),flight, user, passengers, LocalDate.now());
+            Flight updatedFlight = flightService.updateSeatsOfFlight(flight, seats);
+            Booking booking = new Booking(bookingService.getNextID(),updatedFlight, user, passengers, LocalDate.now());
             if (bookingService.bookAFlight(booking)) {
                 console.print("Succesfully booked");
                 console.print(booking.toString());
             }
-
         }
     }
 

@@ -1,7 +1,11 @@
 package service;
 
+import dao.BookingDAO;
 import dao.Database;
+import dao.FlightDAO;
+import dao.UserDAO;
 import entity.Airport;
+import entity.Booking;
 import entity.Flight;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,17 +19,24 @@ class FlightServiceTest {
 
     private FlightService flightService;
     private List<Flight> flights;
+    private Booking booking;
+    private BookingDAO bookingDAO;
+    private FlightDAO flightDAO;
+    private UserDAO userDAO;
 
     @BeforeEach
     void _init_(){
+        bookingDAO = new BookingDAO();
+        flightDAO = new FlightDAO();
+        userDAO = new UserDAO();
         Flight flight = new Flight(1,"BUT253", Airport.AGD,Airport.DXB,500,100, LocalDate.parse("2020-03-20"));
         flights = new ArrayList<>();
         flights.add(flight);
 
-        Database.FLIGHT_DB_PATH =  "./data/testFlights.bin";
+        FlightDAO.FLIGHT_DB_PATH =  "./data/testFlights.bin";
         Database db = new Database();
-        flightService = new FlightService(db);
-        db.flightDAO.create(flight);
+        flightService = new FlightService();
+        flightDAO.create(flight);
     }
 
     @Test

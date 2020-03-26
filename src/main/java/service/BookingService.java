@@ -9,13 +9,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class BookingService {
-    private Database db;
-    public BookingService(Database db) {
-        this.db = db;
-    }
+    private BookingDAO bookingDAO = new BookingDAO();
+
 
     public List<Booking> getAllBookings(String authenticatedUsername){
-        return db.bookingDAO.getAll().stream().filter(booking ->
+        return bookingDAO.getAll().stream().filter(booking ->
                 booking.getUser().getUsername().equals(authenticatedUsername))
                 .collect(Collectors.toList());
     }
@@ -28,10 +26,10 @@ public class BookingService {
     }
 
     public boolean bookAFlight(Booking booking){
-        return db.bookingDAO.create(booking);
+        return bookingDAO.create(booking);
     }
     public int getNextID(){
-        List<Booking> collect = db.bookingDAO.getAll()
+        List<Booking> collect = bookingDAO.getAll()
                 .stream()
                 .sorted((a, b) -> b.getID() - a.getID())
                 .collect(Collectors.toList());
@@ -39,6 +37,6 @@ public class BookingService {
     }
 
     public boolean cancelBooking(int bookingID){
-        return db.bookingDAO.delete(bookingID);
+        return bookingDAO.delete(bookingID);
     }
 }

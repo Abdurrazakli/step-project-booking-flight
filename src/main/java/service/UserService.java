@@ -7,17 +7,14 @@ import entity.User;
 import java.util.Optional;
 
 public class UserService {
-    private Database db;
-    public UserService(Database db) {
-        this.db = db;
-    }
+    private UserDAO userDAO = new UserDAO();
 
     public boolean checkUsername(String username) {
-        return db.userDAO.getAll().stream().anyMatch(user -> user.getUsername().equals(username));
+        return userDAO.getAll().stream().anyMatch(user -> user.getUsername().equals(username));
     }
 
     public Optional<User> getValidatedUser(String username, String password){
-        Optional<User> user = db.userDAO.getAll().stream().filter(user1 -> user1.getUsername().equals(username)).findAny();
+        Optional<User> user = userDAO.getAll().stream().filter(user1 -> user1.getUsername().equals(username)).findAny();
         if(user.isPresent() && user.get().getPassword().equals(password)){
             return user;
         }
@@ -25,7 +22,7 @@ public class UserService {
     }
 
     public boolean createNewUser(User user){
-        return db.userDAO.create(user);
+        return userDAO.create(user);
     }
 
 }

@@ -11,7 +11,7 @@ public class Flight implements Serializable {
     private final Airport from;
     private final Airport to;
     private final int price;
-    private final int seats;
+    private int seats;
     private final LocalDate flightDate;
 
     public Flight(int id, String flightNumber, Airport from, Airport to, int price, int seats, LocalDate startDate) {
@@ -42,6 +42,10 @@ public class Flight implements Serializable {
 
     public int getPrice() {
         return price;
+    }
+
+    public void setSeats(int seats) {
+        this.seats = seats;
     }
 
     public int getSeats() {

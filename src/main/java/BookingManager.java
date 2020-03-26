@@ -9,18 +9,16 @@ public class BookingManager {
     private RegisterController register;
     private LoginController login;
     private TerminateProgram terminator;
-    private Database db;
     private Console console;
     private GuestController guest;
 
     public BookingManager(){
         console = new Console();
-        db = new Database();
-        register = new RegisterController(console,db);
-        login = new LoginController(console,db);
+        register = new RegisterController(console);
+        login = new LoginController(console);
         terminator = new TerminateProgram();//TODO added features; &&& Make terminate static;
-        guest = new GuestController(console,db);
-        FlightGenerator.generation(db);
+        guest = new GuestController(console);
+        FlightGenerator.generation();
 
     }
 

@@ -1,9 +1,11 @@
 package service;
 
+import dao.BookingDAO;
 import dao.Database;
+import dao.FlightDAO;
+import dao.UserDAO;
 import entity.*;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,10 +22,16 @@ class BookingServiceTest {
     private Flight flight;
     private Passenger passenger;
     private Booking booking;
+    private BookingDAO bookingDAO;
+    private FlightDAO flightDAO;
+    private UserDAO userDAO;
     private List<Passenger> passengers;
     private static BookingService bookingService;
     @BeforeEach
     void init(){
+        bookingDAO = new BookingDAO();
+        flightDAO = new FlightDAO();
+        userDAO = new UserDAO();
         flight = new Flight(12,"THY358", Airport.ATL,Airport.AGD,100,10,LocalDate.now());
         passengers = new ArrayList<>();
         bookings = new ArrayList<>();
@@ -32,16 +40,15 @@ class BookingServiceTest {
         user =  new User("TestName","TestSurname",Long.toString(System.currentTimeMillis()),"123456");
         booking = new Booking(1, flight,user,passengers,LocalDate.now());
         bookings.add(booking);
-        database = new Database();
-        bookingService = new BookingService(database);
+        bookingService = new BookingService();
         //writing to database
-        database.bookingDAO.create(booking);
+        bookingDAO.create(booking);
     }
     @AfterEach
     void delete(){
-        database.flightDAO.delete(flight.getID());
-        database.bookingDAO.getAll().forEach(s-> database.bookingDAO.delete(s.getID()));
-        database.userDAO.delete(user.getID());
+        flightDAO.delete(flight.getID());
+        bookingDAO.getAll().forEach(s-> bookingDAO.delete(s.getID()));
+        userDAO.delete(user.getID());
     }
     @Test
     void getAllBookings() {
