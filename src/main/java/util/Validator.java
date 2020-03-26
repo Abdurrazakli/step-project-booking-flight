@@ -1,6 +1,5 @@
 package util;
 
-import dao.Database;
 import entity.Flight;
 import service.UserService;
 import ui.Console;
@@ -9,11 +8,9 @@ import java.util.List;
 import java.util.Optional;
 
 public class Validator {
-    private Database db;
     UserService userService;
     private int flightIndex;
     public Validator(){
-        this.db = db;
         userService = new UserService();
     }
 

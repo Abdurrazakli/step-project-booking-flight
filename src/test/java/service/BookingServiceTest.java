@@ -1,7 +1,6 @@
 package service;
 
 import dao.BookingDAO;
-import dao.Database;
 import dao.FlightDAO;
 import dao.UserDAO;
 import entity.*;
@@ -18,7 +17,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class BookingServiceTest {
     private List<Booking> bookings;
     private User user;
-    private Database database;
     private Flight flight;
     private Passenger passenger;
     private Booking booking;

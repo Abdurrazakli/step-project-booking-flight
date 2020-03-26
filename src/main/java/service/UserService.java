@@ -1,6 +1,5 @@
 package service;
 
-import dao.Database;
 import dao.UserDAO;
 import entity.User;
 

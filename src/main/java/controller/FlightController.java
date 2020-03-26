@@ -1,6 +1,5 @@
 package controller;
 
-import dao.Database;
 import entity.Flight;
 import service.FlightService;
 import ui.Console;
@@ -10,7 +9,6 @@ import java.util.List;
 
 public class FlightController {
     private Console console;
-    private Database db;
     private FlightService flightService;
 
 

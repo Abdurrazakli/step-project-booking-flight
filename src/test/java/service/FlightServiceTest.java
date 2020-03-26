@@ -1,7 +1,6 @@
 package service;
 
 import dao.BookingDAO;
-import dao.Database;
 import dao.FlightDAO;
 import dao.UserDAO;
 import entity.Airport;
@@ -33,8 +32,6 @@ class FlightServiceTest {
         flights = new ArrayList<>();
         flights.add(flight);
 
-        FlightDAO.FLIGHT_DB_PATH =  "./data/testFlights.bin";
-        Database db = new Database();
         flightService = new FlightService();
         flightDAO.create(flight);
     }

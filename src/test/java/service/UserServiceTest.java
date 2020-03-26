@@ -1,8 +1,5 @@
 package service;
 
-import dao.BookingDAO;
-import dao.Database;
-import dao.FlightDAO;
 import dao.UserDAO;
 import entity.User;
 import org.junit.jupiter.api.AfterEach;

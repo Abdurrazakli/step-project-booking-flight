@@ -1,6 +1,5 @@
 package controller;
 
-import dao.Database;
 import entity.User;
 import service.UserService;
 import ui.Console;

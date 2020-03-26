@@ -1,14 +1,11 @@
 package util;
 
-import dao.Database;
 import dao.FileOperations;
 import entity.Airline;
 import entity.Airport;
 import entity.Flight;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;

@@ -1,6 +1,5 @@
 package controller;
 
-import dao.Database;
 import entity.Booking;
 import entity.Flight;
 import entity.Passenger;
